@@ -1,0 +1,1 @@
+The program checks if a point belongs to a straight line

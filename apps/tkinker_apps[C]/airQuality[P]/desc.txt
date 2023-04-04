@@ -1,0 +1,1 @@
+This app displays current air quality in Cracow and nearby cities

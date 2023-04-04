@@ -1,0 +1,10 @@
+Program sklada sie z 3 zadan z dziedziny kryptogramow. Tresc zadan brzmi nastepujaco:
+
+1. Odszyfruj kryptogram: AWYKWIAPCSSOYERAZTZCZ zaszyfrowany metoda kolumnowa. Wykorzystano tutaj
+tablice dwuwymiarowa zawierajaca 3 kolumny oraz klucz: 2,0,1. Podczas szyfrowania pominieto spacje.
+
+2. Napisz program, który zaszyfruje tekst jawny metoda kolumnowa oraz dający możliwość wprowadzenia liczby
+kolumn i klucza.
+
+3. Zaszyfruj metoda plotowa tekst: WLASNE MALE OGNISKO CENNIEJSZE OD STOSU ZLOTA. Zastosuj plot
+wysokosci 2. Przy szyfrowaniu pomin spacje.
