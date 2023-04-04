@@ -1,0 +1,1 @@
+This program will calculate grade point average based on "grades.txt" file in the directory or manual input. "grades.txt" must contain only numbers from 1 to 6 separated by commas and has to be in the program directory

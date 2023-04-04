@@ -1,0 +1,1 @@
+This app takes array of images as the input and displays them with options to add filters

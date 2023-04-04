@@ -1,0 +1,1 @@
+This is a module with functions for calculating the distance of a point from a segment by the equation of a line
