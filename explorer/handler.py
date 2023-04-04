@@ -90,6 +90,9 @@ class Explorer:
     
     @staticmethod
     def run(path):
+        if (os.path.basename(path) == "notfound"): 
+            Text.display("\nCould not find main.py file in the program folder", "red")
+            return False
         Text.display("\nStarting app...\n", "blue")
         os.system(f"python {path}")
 
@@ -116,4 +119,4 @@ class Explorer:
             base = os.path.basename(file)
             if base == "main.py":
                 return "main.py"
-        return "Couldn't find main.py file"
+        return "notfound"
