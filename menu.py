@@ -70,7 +70,8 @@ class Menu:
             menuOptions.append({"name": "back", "type": "back", "desc": "Go back to the previous directory"})
 
         return menuOptions
-
+    
+    @staticmethod
     def limits(min, val, max):
         return int(min) <= int(val) <= int(max)
 
