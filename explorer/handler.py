@@ -7,7 +7,11 @@ class Explorer:
 
     @staticmethod
     def getData(path):
-        return Explorer.categories(path)
+        categories = Explorer.categories(path)
+        if (not categories):
+            Text.display("Programs folder is empty", "red")
+            exit()
+        return categories
 
     @staticmethod
     def isdir(path):
@@ -42,22 +46,24 @@ class Explorer:
 
             c = Explorer.regexp(base, "c")
             p = Explorer.regexp(base, "p")
+            c_and_p = re.search("(\[(c|C)\]\[P|p\])|(\[(p|P)\]\[C|c\])", base)
 
-            if c and p:
+            if c_and_p:
                 Text.display(
-                    "Error: file can't be both a category and a program", "red")
+                    "\nError: file can't be both a category and a program", "red")
                 Text.display(
                     "Please rename the file to remove the [C] or [P] tag", "red")
                 Text.display("File: "+file, "red")
-                Text.display("File will be ignored\n", "red")
+                Text.display("File will be ignored", "red")
                 continue
             elif c:
-                data["subcategories"].append(Explorer.categories(file))
+                if (Explorer.isdir(file)): data["subcategories"].append(Explorer.categories(file))
             elif p:
-                data["apps"].append(Explorer.program(file))
+                if (Explorer.isdir(file)): data["apps"].append(Explorer.program(file))
 
         return data
-
+    
+    @staticmethod
     def categories(folder):
         contents = Explorer.listDir(folder)
         if (not contents):
@@ -70,7 +76,8 @@ class Explorer:
             **Explorer.sortFiles(contents)
         }
         return data
-
+    
+    @staticmethod
     def descFile(folder):
         contents = Explorer.listDir(folder)
         if (not contents):
@@ -80,7 +87,8 @@ class Explorer:
             if base == "desc.txt":
                 return open(file, "r").read()
         return "No description file provided (desc.txt)"
-
+    
+    @staticmethod
     def run(path):
         Text.display("\nStarting app...\n", "blue")
         os.system(f"python {path}")
