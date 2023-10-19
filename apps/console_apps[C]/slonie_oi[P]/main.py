@@ -1,6 +1,6 @@
 import os
+import subprocess
 
 dir = os.path.dirname(__file__)
 file = os.path.join(dir, "elephants.py")
-data = open(file).read()
-exec(data)
+subprocess.call(["python", file])

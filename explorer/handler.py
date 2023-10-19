@@ -1,7 +1,7 @@
 from explorer.submodules.text import Text
 import os
 import re
-
+import subprocess
 
 class Explorer:
 
@@ -94,7 +94,7 @@ class Explorer:
             Text.display("\nCould not find main.py file in the program folder", "red")
             return False
         Text.display("\nStarting app...\n", "blue")
-        os.system(f"python {path}")
+        subprocess.call(["python", path])
 
     @staticmethod
     def program(folder):
