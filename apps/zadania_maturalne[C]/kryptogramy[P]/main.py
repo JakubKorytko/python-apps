@@ -1,3 +1,5 @@
+""" Run all tasks from zadania_maturalne[C]/kryptogramy[P] in subprocesses. """
+
 import os
 import subprocess
 
@@ -8,3 +10,4 @@ for i in range(1, 4):
     subprocess.call(["python", file])
 
     print("\n---\n")
+    

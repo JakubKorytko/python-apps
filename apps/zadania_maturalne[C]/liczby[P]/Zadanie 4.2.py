@@ -1,3 +1,5 @@
+""" A module that counts numbers divisible by 2 and 8 from a file with binary numbers. """
+
 from data import numbers
 
 divisibleBy2 = 0 #liczby podzielne przez 2

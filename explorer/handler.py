@@ -1,3 +1,6 @@
+""" This module defines a class called 'Explorer' that provides methods for exploring a directory structure containing programs and categories.
+It can categorize programs and categories, retrieve program descriptions, run programs, and provide information about them. """
+
 from explorer.submodules.text import Text
 import os
 import re
@@ -7,6 +10,8 @@ class Explorer:
 
     @staticmethod
     def getData(path):
+        """ Returns a list of categories in the given path. """
+
         categories = Explorer.categories(path)
         if (not categories):
             Text.display("Programs folder is empty", "red")
@@ -15,6 +20,8 @@ class Explorer:
 
     @staticmethod
     def isdir(path):
+        """ Returns True if the given path is a directory, False otherwise. """
+
         exists = os.path.exists(path)
         if not exists:
             return False
@@ -25,6 +32,8 @@ class Explorer:
 
     @staticmethod
     def listDir(path):
+        """ Returns a list of files in the given directory. """
+
         if not Explorer.isdir(path):
             return False
         dirs = os.listdir(path)
@@ -33,6 +42,8 @@ class Explorer:
 
     @staticmethod
     def regexp(data, option):
+        """ Returns True if the given option is in the given data, False otherwise. """
+
         upper = option.upper()
         lower = option.lower()
         regMatch = re.search(f"\w+\[({lower}|{upper})\]", data)
@@ -40,6 +51,8 @@ class Explorer:
 
     @staticmethod
     def sortFiles(files):
+        """ Returns a dictionary containing a list of categories and a list of programs. """
+
         data = {"subcategories": [], "apps": []}
         for file in files:
             base = os.path.basename(file)
@@ -65,6 +78,8 @@ class Explorer:
     
     @staticmethod
     def categories(folder):
+        """ Returns a dictionary containing the name, path, description, and contents of the given folder. """
+
         contents = Explorer.listDir(folder)
         if (not contents):
             return False
@@ -79,6 +94,8 @@ class Explorer:
     
     @staticmethod
     def descFile(folder):
+        """ Returns the contents of the desc.txt file in the given folder. """
+
         contents = Explorer.listDir(folder)
         if (not contents):
             return False
@@ -90,6 +107,8 @@ class Explorer:
     
     @staticmethod
     def run(path):
+        """ Runs the program at the given path. """
+
         if (os.path.basename(path) == "notfound"): 
             Text.display("\nCould not find main.py file in the program folder", "red")
             return False
@@ -98,6 +117,8 @@ class Explorer:
 
     @staticmethod
     def program(folder):
+        """ Returns a dictionary containing the name, path, description, and entry point of the given folder. """
+
         contents = Explorer.listDir(folder)
         if (not contents):
             return False
@@ -112,6 +133,8 @@ class Explorer:
 
     @staticmethod
     def execFile(folder):
+        """ Returns the entry point of the app in the given folder. """
+    
         contents = Explorer.listDir(folder)
         if (not contents):
             return False

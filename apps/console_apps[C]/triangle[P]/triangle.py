@@ -1,3 +1,5 @@
+""" A program that checks if you can create a triangle from the given sides. """
+
 print("\nWelcome to the triangle creator app!")
 print("Please enter the sides of the triangle to check if you can create it\n")
 

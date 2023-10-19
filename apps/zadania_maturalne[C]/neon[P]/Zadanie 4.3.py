@@ -1,3 +1,5 @@
+""" A module that counts the most common letter from a file with commands. """
+
 from data import data
 from handle import handle, alph
 

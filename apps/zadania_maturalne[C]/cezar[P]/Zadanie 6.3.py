@@ -1,8 +1,12 @@
+""" A module that finds words that are incorrectly encrypted with the Caesar cipher from a file. """
+
 from data import *
 
 res = ""
 
 def decrypt(word, encrypted):
+    """ Decrypts given word using Caesar cipher. """
+
     res = ""
     elements = []
     for index, letter in enumerate(word):
@@ -34,4 +38,3 @@ resultFile = saveResult("3")
 resultFile.truncate(0)
 resultFile.write(res)
 resultFile.close()
-

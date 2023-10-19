@@ -1,3 +1,5 @@
+""" Entry point for airQuality app """
+
 from utilities.generation import Generating
 from utilities.api import API
 from config import config

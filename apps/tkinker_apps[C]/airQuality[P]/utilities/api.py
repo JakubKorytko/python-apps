@@ -1,3 +1,5 @@
+""" A module for fetching data from the API and returning it in a usable format. """
+
 import requests
 import json
 import re
@@ -6,6 +8,8 @@ class API:
 
     @staticmethod
     def fetch():
+        """ Fetches data from the API and returns it in a usable format. """
+
         try:
             apiRequestsCity = requests.get("http://api.gios.gov.pl/pjp-api/rest/station/findAll")
             apiCity = json.loads(apiRequestsCity.content)
@@ -60,6 +64,8 @@ class API:
     
     @staticmethod
     def api_error():
+        """ Displays an error message and exits the program. """
+
         print("There was an error while fetching data from API. Please try again later.")
         print("Check if the API is working properly: http://api.gios.gov.pl/pjp-api/rest/station/findAll")
         print("Also check if you have an internet connection.")

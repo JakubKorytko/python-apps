@@ -1,13 +1,19 @@
+""" Module for calculating the distance of a point from a segment by the equation of a line. """
+
 from math import *
 
 print("\nThis is a module with functions for calculating the distance of a point from a segment by the equation of a line.")
 
 def distance(x_a, y_a, x_b, y_b, x_p, y_p):
+    """ Calculates the distance of a point from a segment by the equation of a line. """
+
     tab = straight_line_equation(x_a, y_a, x_b, y_b)
 
     return abs((tab[0]*x_p)-y_p+tab[1])/sqrt(tab[0]**2+1)
 
 def straight_line_equation(x_a, y_a, x_b, y_b):
+    """ Calculates the straight line equation. """
+
     a = (y_b - y_a)/(x_b - x_a)
     b = y_a - a * x_a
     return [a,b]

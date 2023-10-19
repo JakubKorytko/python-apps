@@ -1,3 +1,5 @@
+""" Runs average.py in a subprocess. """
+
 import os
 import subprocess
 

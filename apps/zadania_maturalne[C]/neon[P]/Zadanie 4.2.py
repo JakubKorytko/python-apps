@@ -1,3 +1,5 @@
+""" A module that counts the longest sequence of the same command from a file with commands. """
+
 from data import data
 
 count = {

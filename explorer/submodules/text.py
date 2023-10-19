@@ -1,8 +1,12 @@
+""" Text module for displaying formatted text in the terminal. """
+
 from colored import fg, attr
 
 class Text:
     @staticmethod
     def rainbow(text, colors, start):
+        """ Returns a rainbow-colored text. """
+
         coloredText = ""
 
         for i in range(len(text)):
@@ -13,4 +17,6 @@ class Text:
 
     @staticmethod
     def display(text, color="white"):
+        """ Displays the given text in the given color. """
+
         print(fg(color) + text + attr('reset'))

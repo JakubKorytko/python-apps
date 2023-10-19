@@ -1,5 +1,9 @@
+""" File with all of the solutions to the task zadaniamaturalne[C]/liczby[P] """
+
 #ZADANIE 1
 def zad1():
+    """ Returns number of lines in file 'liczby.txt' that have more zeros than ones. """
+
     f = open("liczby.txt", "r")
     z = 0
     for x in f:
@@ -13,6 +17,8 @@ def zad1():
 
 #ZADANIE 2
 def zad2():
+    """ Returns number of lines in file 'liczby.txt' that are divisible by 2 and 8. """
+
     f = open("liczby.txt", "r")
     z = 0 #liczby podzielne przez 2
     k = 0 #liczby podzielne przez 8
@@ -25,6 +31,8 @@ def zad2():
 
 #ZADANIE 3
 def zad3():
+    """ Returns the lines in file 'liczby.txt' that have the smallest and the biggest number. """
+
     f = open("liczby.txt", "r")
     z = []
     for x in f:

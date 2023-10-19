@@ -1,3 +1,5 @@
+""" Run all tasks from zadania_maturalne[C]/cezar[P] in subprocesses and save results to files. """
+
 import os
 import subprocess
 

@@ -1,3 +1,5 @@
+""" A app that prints the final text from a file with commands. """
+
 from data import data
 from handle import handle
 

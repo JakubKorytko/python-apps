@@ -1,3 +1,5 @@
+""" Runs palindrome.py in a subprocess. """
+
 import os
 import subprocess
 

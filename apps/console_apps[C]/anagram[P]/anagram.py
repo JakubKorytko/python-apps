@@ -1,3 +1,5 @@
+""" This program will find anagrams in a list of words """
+
 print("This program will find anagrams in a list of words\n")
 
 i=1
@@ -7,12 +9,16 @@ anagrams = []
 word="start"
 
 def ordinal(n):
+    """ Returns ordinal number of a number """
+
     if 10 <= n % 100 < 20:
         return str(n) + 'th'
     else:
         return str(n) + {1 : 'st', 2 : 'nd', 3 : 'rd'}.get(n % 10, "th")
 
 def present(*args):
+    """ Returns True if anagram is in the list """
+
     arr = sorted([*args])
     for el in anagrams:
         if el == arr: return True
@@ -36,4 +42,3 @@ for index_1, el_1 in enumerate(sortedLetters):
 
 if len(anagrams) == 0: print("\nThere are no anagrams in the list")
 else: print("\nWords",*anagrams,"are anagrams")
-    

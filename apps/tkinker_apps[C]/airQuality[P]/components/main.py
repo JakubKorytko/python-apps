@@ -1,3 +1,5 @@
+""" Main component for the airQuality app. """
+
 from tkinter import *
 
 class Main():
@@ -5,10 +7,14 @@ class Main():
     firstGenerate = True
 
     def __init__(self, options, stations):
+        """ Initializes the app. """
+
         self.options = options
         self.stations = stations
 
     def rootInit(self):
+        """ Initializes the root window. """
+
         self.root = Tk()
         self.root.title("Air quality in Cracow")
 
@@ -26,4 +32,6 @@ class Main():
         self.root.configure(background='white')
 
     def destroy(self):
+        """ Destroys the root window. """
+
         self.root.destroy()

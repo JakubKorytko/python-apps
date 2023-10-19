@@ -1,6 +1,16 @@
-alph = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+""" Commands handler for neon task """
+
+alph = ['A','B','C','D',
+        'E','F','G','H',
+        'I','J','K','L',
+        'M','N','O','P',
+        'Q','R','S','T',
+        'U','V','W','X',
+        'Y','Z']
 
 def handle(txt, y):
+    """ Handles commands based on given text. """
+
     x = y.split(" ")
     if x[0]=="DOPISZ":
         txt+=x[1]

@@ -1,3 +1,5 @@
+""" App that encrypts a message using rail fence cipher. """
+
 print("-Zadanie 3-\n")
 
 text = "WLASNE MALE OGNISKO CENNIEJSZE OD STOSU ZLOTA"

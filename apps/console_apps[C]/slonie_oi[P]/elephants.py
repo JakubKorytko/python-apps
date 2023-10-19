@@ -1,3 +1,5 @@
+""" A program that calculates the minimum effort needed to move elephants from one position to another. """
+
 #################################
 #                               #
 #   n - liczba słoni            #

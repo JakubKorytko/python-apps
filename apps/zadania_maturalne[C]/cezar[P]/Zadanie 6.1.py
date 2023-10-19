@@ -1,10 +1,13 @@
+""" Encrypts given text using Caesar cipher. """
+
 from data import *
 
 K=107
 res = ""
 
 def encrypt(word,k):
-    
+    """ Encrypts given word using Caesar cipher. """
+
     result = ""
 
     for letter in word:

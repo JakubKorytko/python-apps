@@ -1,3 +1,6 @@
+""" This module defines a class called 'Menu' that offers a text-based menu for interacting with a selection of Python applications.
+Users can choose categories and programs to run, get descriptions, and navigate through the menu. """
+
 from explorer.submodules.text import Text
 from explorer.handler import Explorer
 from random import randint
@@ -9,6 +12,8 @@ colorsRange = [120,229] # excluded dark colors
 class Menu:
     @staticmethod
     def welcome():
+        """ Returns a rainbow-colored welcome message. """
+
         welcome = "\nWelcome to the python-apps menu! Here you can select what app you want to run!"
         start = randint(colorsRange[0], colorsRange[1]-len(welcome))
         colors = colorsRange[1]-start
@@ -16,6 +21,8 @@ class Menu:
 
     @staticmethod
     def print_menu(options):
+        """ Prints the menu. """
+
         Text.display("[C] means an option is a category, if you select a category, it will list the programs inside of it to select", "green")
         Text.display("[P] means an option is a program, if you select a program, it will run it", "green")
         Text.display("[?] Enter a number followed by a ? to get description of the category/program (e.g. 1?)\n", "green")
@@ -36,12 +43,15 @@ class Menu:
 
     @staticmethod
     def findByName(options, name):
+        """ Returns an option with the given name. """
+
         for option in options:
             if option["name"] == name:
                 return option
 
     @staticmethod
     def handle_choice(choice, selected):
+        """ Handles the user's choice. """
 
         match(choice):
             case {"type": "exit"}:
@@ -57,6 +67,8 @@ class Menu:
     
     @staticmethod
     def generateOptions(options, selected):
+        """ Generates the menu options. """
+
         option = options
 
         for s in selected:
@@ -73,10 +85,14 @@ class Menu:
     
     @staticmethod
     def limits(min, val, max):
+        """ Checks if a value is between two other values. """
+
         return int(min) <= int(val) <= int(max)
 
     @staticmethod
     def errorBoundary(choice, opt):
+        """ Checks if the user's choice is valid. """
+
         res = {"skip": False, "showMenu": True}
 
         if (choice.strip() == ""): return [*{"skip": True, "showMenu": False}.values()]
@@ -106,6 +122,7 @@ class Menu:
 
     @staticmethod
     def loop(options):
+        """ Loops the menu. """
 
         Text.display(Menu.welcome()+"\n")
 

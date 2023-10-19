@@ -1,4 +1,8 @@
+""" A program that sorts letters in a word or phrase. """
+
 def clear(text):
+    """ Clears text from spaces and punctuation. """
+
     replacements = [" ", ",", ".", "!", "?", ":", ";", "'", '"', "(", ")", "[", "]", "{", "}", "/", "\\", "|", "_", "-", "+", "=", "*", "&", "^", "%", "$", "#", "@", "~", "`"]
     for replacement in replacements:
         text = text.replace(replacement, "")
@@ -12,6 +16,8 @@ print("Keep in mind that the final output will be in lower case, without spaces 
 text = input("\nEnter a word or phrase: ")
 
 def split(word): 
+    """ Splits a word into a list of letters. """
+
     return [char for char in word]
 
 text = clear(text).lower()

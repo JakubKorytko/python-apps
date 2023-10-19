@@ -1,3 +1,5 @@
+""" Program that checks if a phrase is a palindrome """
+
 print("\nThis program checks if a phrase is a palindrome! (its case insensitive)\n")
 print("Palindrome: a word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.\n")
 

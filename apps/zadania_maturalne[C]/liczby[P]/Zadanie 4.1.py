@@ -1,3 +1,5 @@
+""" App that counts numbers that have more zeros than ones in a file with binary numbers. """
+
 from data import numbers
 
 amount = 0

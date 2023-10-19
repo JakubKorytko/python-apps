@@ -1,8 +1,11 @@
-#app to calculate grade point average
+""" App to calculate grade point average """
+
 import re
 import os
 
 def error(grade):
+    """ Prints an error message and exits the program."""
+
     print("\nFile contains invalid grade: "+grade+" (must be a number between 1 and 6)")
     print("Exiting...")
     exit()

@@ -1,3 +1,5 @@
+""" Runs all tasks from zadania_maturalne[C]/liczby[P] in subprocesses. """
+
 import os
 import subprocess
 

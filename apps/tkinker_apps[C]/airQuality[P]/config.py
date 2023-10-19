@@ -1,3 +1,5 @@
+""" Configuration file for airQuality.py """
+
 import json
 import os
 

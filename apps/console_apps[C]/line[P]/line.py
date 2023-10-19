@@ -1,3 +1,5 @@
+""" Program that checks if a point belongs to a straight line """
+
 print ("\nWelcome to the program that checks if a point belongs to a straight line\n")
 
 line = {

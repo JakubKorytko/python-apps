@@ -1,14 +1,19 @@
+""" A module for generating the menu and the main window. """
+
 from tkinter import *
 from utilities.draw import Draw
 
 class Generating:
 
     def assign(self, app=None, dropdown=None, menu=None):
+        """ Assigns the app, dropdown and menu objects. """
+
         self.app = app
         self.dropdown = dropdown
         self.menu = menu
 
     def selectCity(self, selected):
+        """ Generates the menu for selecting a city. """
 
         if (self.menu == None or self.menu.isOpen): return False
 
@@ -32,6 +37,7 @@ class Generating:
         return "OK"
 
     def generate(self, stationID=0):
+        """ Generates the main window. """
 
         if (self.app == None): return False
 
@@ -51,4 +57,3 @@ class Generating:
         Draw.city(self.app.canvas, station['stationName'], {"row": 0, "columnspan": 2})
 
         if (self.menu): Draw.selectStation(self.app.canvas, lambda: self.selectCity(stationID))
-

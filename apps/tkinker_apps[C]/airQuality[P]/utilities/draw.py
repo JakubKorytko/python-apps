@@ -1,3 +1,5 @@
+""" A module for drawing elements on the canvas. """
+
 from config import config
 from tkinter import *
 
@@ -7,22 +9,30 @@ class Draw:
 
     @staticmethod
     def city(canvas, text, grid):
+        """ Draws a city label. """
+
         cityLabel = Label(canvas, text=text, background='white', font=Draw.font)
         cityLabel.grid(column=0, row=grid["row"], columnspan=grid["columnspan"], sticky=EW)
 
     @staticmethod
     def selectStation(canvas, callback):
+        """ Draws a button for selecting a station. """
+
         button = Button(canvas, text='Change station', command=callback)
         button.grid(column=0, row=1, columnspan=2, sticky=EW)
     
     @staticmethod
     def stationButton(canvas, value, variable, callback):
+        """ Draws a radio button for selecting a station. """
+
         button = Radiobutton(canvas, variable=variable, value=value, command=callback)
         button.grid(column=1, row=value, columnspan=1, sticky=EW)
         return button
 
     @staticmethod
     def sensor(canvas, sensor, coords):
+        """ Draws a sensor. """
+
         kName = Label(canvas, text=sensor["name"], font=Draw.font)
         kVal = Label(canvas, text=Draw.translate(sensor["value"]), fg=Draw.color(sensor["value"]), font=Draw.font)
 
@@ -31,6 +41,8 @@ class Draw:
 
     @staticmethod
     def color(desc):
+        """ Returns a color for a given description. """
+
         if desc == 'Bardzo dobry':
             return '#00FF00'
         elif desc == 'Dobry':
@@ -42,6 +54,8 @@ class Draw:
     
     @staticmethod
     def translate(text):
+        """ Translates a description to English. """
+
         if text == 'Bardzo dobry':
             return 'Very good'
         elif text == 'Dobry':

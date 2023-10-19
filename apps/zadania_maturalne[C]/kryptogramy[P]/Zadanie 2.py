@@ -1,3 +1,5 @@
+""" App that encrypts a message using columnar transposition cipher. """
+
 import math
 
 print("-Zadanie 2-\n")

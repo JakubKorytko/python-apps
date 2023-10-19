@@ -1,3 +1,5 @@
+""" Runs sortLetters.py in a subprocess. """
+
 import os
 import subprocess
 

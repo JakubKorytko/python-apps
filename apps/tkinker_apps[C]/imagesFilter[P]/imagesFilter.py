@@ -1,3 +1,5 @@
+""" App that filters images from a list of urls. """
+
 images = [
     "https://picsum.photos/id/1/512",
     "https://picsum.photos/id/2/512",
@@ -32,6 +34,8 @@ filters = {
 }
 
 def getImage(url, filter="none"):
+    """ Returns an image from the given url. """
+
     im = Image.open(requests.get(url, stream=True).raw)
     im = im.resize((512, 512))
     if (filter != "none"):
@@ -39,6 +43,8 @@ def getImage(url, filter="none"):
     return ImageTk.PhotoImage(im)
 
 def generateList(filter="none"):
+    """ Returns a list of images. """
+
     converted = []
     for image in images:
         try:
@@ -50,6 +56,8 @@ def generateList(filter="none"):
     return converted
 
 def generateImages():
+    """ Returns a dictionary of filtered and unfiltered images. """
+
     imagesLists = {}
     imagesLists["NOFILTER"] = generateList()
     print("\nGenerating blured images...")
@@ -61,6 +69,8 @@ def generateImages():
     return imagesLists
 
 def endApp():
+    """ Ends the app. """
+
     print("Exiting...")
     root.destroy()
 
@@ -68,6 +78,7 @@ imagesFiltered = generateImages()
 length = len(imagesFiltered["NOFILTER"])
 
 def generateUI(imgNumber=0, useFilter="NOFILTER"):
+    """ Generates the UI. """
 
     UI = {
         "Filters": {

@@ -1,3 +1,5 @@
+""" Menu for selecting city to display air quality data for. """
+
 from tkinter import *
 
 class Menu:
@@ -6,9 +8,13 @@ class Menu:
     stationButtons = []
 
     def __init__(self, stations):
+        """ Initializes the menu. """
+
         self.stations = stations
 
     def rootInit(self):
+        """ Initializes the menu window. """
+
         self.root = Tk()
         self.root.title("Select city")
         
@@ -32,5 +38,7 @@ class Menu:
         self.root.protocol("WM_DELETE_WINDOW", self.quit)
 
     def quit(self):
+        """ Quits the menu. """
+
         self.isOpen = False
         self.root.destroy()

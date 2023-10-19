@@ -1,8 +1,11 @@
+""" Decrypts given text using Cezar cipher. """
+
 from data import *
 
 res = ""
 
 def decrypt(word,k):
+    """ Decrypts given word using Caesar cipher. """
     
     result = ""
     
