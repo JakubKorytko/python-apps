@@ -1,4 +1,4 @@
-""" Components for the airQuality app. """
+""" Components for the air_quality app. """
 
 from components.dropdown import Dropdown
 from components.selection import Menu

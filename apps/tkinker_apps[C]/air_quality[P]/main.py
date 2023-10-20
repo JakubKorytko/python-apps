@@ -1,4 +1,4 @@
-""" Entry point for airQuality app """
+""" Entry point for air_quality app """
 
 from utilities.generation import Generating
 from utilities.api import API

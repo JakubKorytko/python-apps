@@ -1,4 +1,4 @@
-""" Configuration file for airQuality.py """
+""" Configuration file for air_quality.py """
 
 import json
 import os

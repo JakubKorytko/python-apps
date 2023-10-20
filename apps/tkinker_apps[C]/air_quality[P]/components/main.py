@@ -1,4 +1,4 @@
-""" Main component for the airQuality app. """
+""" Main component for the air_quality app. """
 
 from tkinter import *
 
