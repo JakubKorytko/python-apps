@@ -3,6 +3,6 @@
 import os
 import subprocess
 
-dir = os.path.dirname(__file__)
-file = os.path.join(dir, "line.py")
+directory = os.path.dirname(__file__)
+file = os.path.join(directory, "line.py")
 subprocess.call(["python", file])

@@ -3,6 +3,6 @@
 import os
 import subprocess
 
-dir = os.path.dirname(__file__)
-file = os.path.join(dir, "average.py")
+directory = os.path.dirname(__file__)
+file = os.path.join(directory, "average.py")
 subprocess.call(["python", file])
