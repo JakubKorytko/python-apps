@@ -1,4 +1,4 @@
-""" Runs sortLetters.py in a subprocess. """
+""" Runs sort_letters.py in a subprocess. """
 
 import os
 import subprocess
