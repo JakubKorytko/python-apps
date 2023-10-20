@@ -3,6 +3,6 @@
 import os
 import subprocess
 
-dir = os.path.dirname(__file__)
-file = os.path.join(dir, "elephants.py")
+directory = os.path.dirname(__file__)
+file = os.path.join(directory, "elephants.py")
 subprocess.call(["python", file])
