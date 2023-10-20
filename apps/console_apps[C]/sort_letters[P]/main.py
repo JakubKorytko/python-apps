@@ -3,6 +3,6 @@
 import os
 import subprocess
 
-dir = os.path.dirname(__file__)
-file = os.path.join(dir, "sortLetters.py")
+directory = os.path.dirname(__file__)
+file = os.path.join(directory, "sort_letters.py")
 subprocess.call(["python", file])
