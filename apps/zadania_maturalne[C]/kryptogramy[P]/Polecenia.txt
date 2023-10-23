@@ -1,8 +1,0 @@
-1. Odszyfruj kryptogram: AWYKWIAPCSSOYERAZTZCZ zaszyfrowany metodą kolumnową. Wykorzystano tutaj
-tablicę dwuwymiarową zawierającą 3 kolumny oraz klucz: 2,0,1. Podczas szyfrowania pominięto spacje
-
-2. Napisz program, który zaszyfruje tekst jawny metodą kolumnową oraz dający możliwość wprowadzenia liczby
-kolumn i klucza.
-
-3. Zaszyfruj metodą płotową tekst: WŁASNE MALE OGNISKO CENNIEJSZE OD STOSU ZŁOTA. Zastosuj płot
-wysokości 2. Przy szyfrowaniu pomiń spacje.

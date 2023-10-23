@@ -1,1 +1,35 @@
-Polecenia znajduja sie w pliku "Polecenie.pdf" w folderze zadania
+This application solves the described problem:
+
+<Neon>
+
+
+A certain company prepares the display of subtitles composed of capital letters of the English alphabet. At the beginning, the inscription is empty (does not contain letters). In the file "instructions.txt" 2417 instructions are given, which are executed by an automatic machine to generate the inscription. Each instruction consists of a command, a space and a single character. The commands are of four types:
+
+
+ADD letter - means that a single letter must be added to the end of the inscription;
+CHANGE letter - means that the last letter of the current inscription should be changed to the given letter (it can be assumed that the inscription is non-empty)
+DELETE 1 - means that the last letter of the current inscription should be deleted (it can be assumed that the inscription is non-empty)
+MOVE letter - means that the first occurrence from the left of the given letter in the inscription should be replaced with the next letter in the alphabet (if the letter A, it should be replaced with B, if B, it should be replaced with C, etc.) The letter Z should be replaced with A. If the letter does not appear in the inscription, do nothing.
+
+
+Write a program (or several programs) that finds the answers to the following questions. Save each answer in the file "results.txt" and precede it with a number denoting the task.
+
+
+[Task 1]
+
+Calculate the total length of the subtitle after executing all the instructions from the file "instructions.txt".
+
+
+[Task 2]
+
+Find the longest sequence of consecutive instructions of the same type. Give the type of instruction and the length of this sequence as your answer.
+
+
+[Task 3]
+
+Calculate which letter is the most frequently appended (the most frequent occurrence in an ADD instruction). Give this letter and how many times it is appended.
+
+
+[Task 4]
+
+Give the inscription that will be formed after executing all the instructions from the file "instructions.txt".

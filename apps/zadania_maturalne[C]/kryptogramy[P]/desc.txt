@@ -1,10 +1,13 @@
-Program sklada sie z 3 zadan z dziedziny kryptogramow. Tresc zadan brzmi nastepujaco:
+This application solves the described problem:
 
-1. Odszyfruj kryptogram: AWYKWIAPCSSOYERAZTZCZ zaszyfrowany metoda kolumnowa. Wykorzystano tutaj
-tablice dwuwymiarowa zawierajaca 3 kolumny oraz klucz: 2,0,1. Podczas szyfrowania pominieto spacje.
+<Cryptograms>
 
-2. Napisz program, który zaszyfruje tekst jawny metoda kolumnowa oraz dający możliwość wprowadzenia liczby
-kolumn i klucza.
 
-3. Zaszyfruj metoda plotowa tekst: WLASNE MALE OGNISKO CENNIEJSZE OD STOSU ZLOTA. Zastosuj plot
-wysokosci 2. Przy szyfrowaniu pomin spacje.
+1. Decrypt the cryptogram: LYRNAOHDCPUAS encrypted using the columnar method. The following was used here
+a two-dimensional array containing 3 columns and the key: 2, 0, 1. Spaces were omitted during encryption
+
+2. Write a program that decrypts any cryptogram using the column method with the ability to enter the number of
+columns and the key. Skip spaces when encrypting.
+
+3. Encrypt the text using the fence method: A QUICK BROWN FOX JUMPS OVER THE LAZY DOG. Apply the fence
+height 2. Skip spaces when encrypting.
