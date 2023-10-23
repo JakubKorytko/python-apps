@@ -1,0 +1,37 @@
+This application solves the described problem:
+
+<Caesar cipher>
+
+
+The basic Caesar cipher with an offset (key) "k" involves replacing each plaintext character with a character
+lying in the alphabet by "k" positions to the right of the character being replaced.
+When encrypting, it is necessary to proceed in a cyclic manner, that is, if a character does not have a successor in the alphabet shifted by "k" positions,
+the alphabet "wraps around" and the letter "Z" is followed again by the letter "A".
+In this task, we consider only words made up of capital letters of the English alphabet (with ASCII codes from 65 to 90, respectively),
+with lengths of no more than 30 characters.
+
+[Task 1]
+
+There are 100 words in the file data_1.txt. The words are placed on separate lines.
+
+Write a program to encrypt the words in the file "data_1.txt" using the key k = 107.
+Write the result to the file "results_1.txt", each word on a separate line, in the order of the words in the data file.
+
+[Task 2]
+
+In the file "data_2.txt" 3,000 ciphertexts and their corresponding cipher keys are stored.
+Each line contains one ciphertext (an encrypted word) and, after a single space character, the corresponding key (a maximum four-digit number).
+
+Write a program that decrypts the words encrypted with the given keys.
+Save the result in the file "results_2.txt": each decrypted word in a separate line, in the order corresponding to the order of the ciphertexts in the data file.
+
+[Task 3]
+
+The file "data_3.txt" stores 3000 pairs of words, one pair per line, separated by a single space character.
+The second word in each pair is a ciphertext of the first with an unknown key.
+
+Some of the ciphertexts are wrong, meaning that some letters in the word are encoded with different offsets.
+The word always has the same length as the corresponding ciphertext.
+
+Write a program that searches for and writes out those words from the file "data_3.txt" that have been wrongly encoded.
+Write the result in the file "results_3.txt": each word in a separate line, in the order corresponding to the order of these words from the data file.

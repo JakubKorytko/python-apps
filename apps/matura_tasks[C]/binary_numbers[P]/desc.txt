@@ -1,0 +1,23 @@
+This application solves the described problem:
+
+<Binary numbers>
+
+
+The file numbers.txt contains 1000 natural numbers written in binary. Each number is written on a separate line.
+Each binary number contains at most 250 binary digits.
+
+Write a program that will give the answers to the following tasks.
+Save the answers in the file results.txt, and precede each answer with a number denoting the corresponding task.
+
+[Task 1]
+
+State how many numbers in the file numbers.txt have more zeros than ones in their binary notation.
+
+[Task 2]
+
+State how many numbers from the file numbers.txt are divisible by 2 and how many numbers are divisible by 8.
+
+[Task 3]
+
+Find the smallest and largest number in the file numbers.txt.
+Give the numbers of the lines in which they are located as your answer.
