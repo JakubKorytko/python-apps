@@ -1,13 +1,23 @@
 """ A module that finds the smallest and largest number from a file with binary numbers. """
 
-from data import numbers
+def find_lines_with_smallest_and_largest_numbers():
+    """ Returns the lines in file 'numbers.txt' that have the smallest and the biggest number. """
 
-numbersIn10 = [int(x,2) for x in numbers()]
+    min_index = -1
+    max_index = -1
 
-minNumber = min(numbersIn10)
-maxNumber = max(numbersIn10)
+    with open("numbers.txt", "r", encoding="utf-8") as file:
+        numbers = []
+        for line in file:
+            numbers.append(int(line, 2))
 
-minRow = numbersIn10.index(minNumber)+1
-maxRow = numbersIn10.index(maxNumber)+1
+        min_index = numbers.index(min(numbers)) + 1
+        max_index = numbers.index(max(numbers)) + 1
 
-print("Task 3:\nwiersz najmniejszej:",minRow,"\nwiersz najwiekszej:",maxRow)
+    return [min_index, max_index]
+
+[SMALLEST_NUMBER_LINE, LARGEST_NUMBER_LINE] = find_lines_with_smallest_and_largest_numbers()
+
+print("Task 3:\n")
+print(f"the smallest number is in the line {SMALLEST_NUMBER_LINE}")
+print(f"the largest number is in the line {LARGEST_NUMBER_LINE}\n")

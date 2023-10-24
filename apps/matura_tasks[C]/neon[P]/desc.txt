@@ -5,7 +5,7 @@ This application solves the described problem:
 
 A certain company prepares the display of subtitles composed of capital letters of the English alphabet.
 At the beginning, the inscription is empty (does not contain letters).
-In the file "instructions.txt" 2417 instructions are given, which are executed by an automatic machine to generate the inscription.
+In the file "data/instructions.txt" 2417 instructions are given, which are executed by an automatic machine to generate the inscription.
 Each instruction consists of a command, a space and a single character. The commands are of four types:
 
 ADD letter - means that a single letter must be added to the end of the inscription
@@ -25,7 +25,7 @@ Save each answer in the file "results.txt" and precede it with a number denoting
 
 [Task 1]
 
-Calculate the total length of the subtitle after executing all the instructions from the file "instructions.txt".
+Calculate the total length of the subtitle after executing all the instructions from the file "data/instructions.txt".
 
 
 [Task 2]
@@ -42,4 +42,4 @@ Give this letter and how many times it is appended.
 
 [Task 4]
 
-Give the inscription that will be formed after executing all the instructions from the file "instructions.txt".
+Give the inscription that will be formed after executing all the instructions from the file "data/instructions.txt".

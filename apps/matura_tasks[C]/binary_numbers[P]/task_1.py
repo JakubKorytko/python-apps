@@ -1,16 +1,23 @@
 """ App that counts numbers that have more zeros than ones in a file with binary numbers. """
 
-from data import numbers
+def numbers_with_more_zeros_than_ones():
+    """ Returns number of lines in file 'numbers.txt' that have more zeros than ones. """
 
-amount = 0
+    numbers_with_more_zeros = 0
 
-for number in numbers():
-    zerosAndOnes = [0, 0]
-    
-    for digit in number:
-        if (digit.isnumeric()):
-            zerosAndOnes[int(digit)]+=1
-    if (zerosAndOnes[0]>zerosAndOnes[1]):
-        amount+=1
+    with open("numbers.txt", "r", encoding="utf-8") as file:
+        for line in file:
+            count = [0, 0]
+            for char in line:
+                if char.isnumeric():
+                    count[int(char)] += 1
+            if count[0] > count[1]:
+                numbers_with_more_zeros += 1
 
-print("Task 1:\nnumbers with more zeros than ones:", amount)
+        return numbers_with_more_zeros
+
+print("Task 1:\n")
+print(
+    numbers_with_more_zeros_than_ones(),
+    "numbers have more zeros than ones in their binary notation\n"
+)

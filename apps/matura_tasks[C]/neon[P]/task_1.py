@@ -1,11 +1,20 @@
-""" App that calculate string length after performing a series of operations from a file with commands """
+""" App that calculate string length after performing
+a series of operations from a file with commands """
 
-from data import data
-from handle import handle
+from data.file_handler import data
+from data.commands_handler import handle
 
-text = ""
+def process_commands_from_file():
+    """ Process commands from file. """
 
-for command in data():
-    text = handle(text, command.strip())
+    result = ""
 
-print("Task 1:", len(text))
+    for command in data():
+        result = handle(result, command.strip())
+
+    return result
+
+FINAL_TEXT = process_commands_from_file()
+FINAL_TEXT_LENGTH = len(FINAL_TEXT)
+
+print("Task 1:", FINAL_TEXT_LENGTH)

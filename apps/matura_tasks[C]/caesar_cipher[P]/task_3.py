@@ -1,8 +1,6 @@
 """ A module that finds words that are incorrectly encrypted with the Caesar cipher from a file. """
 
-from data import *
-
-res = ""
+from data.handler import MAX_ORD, MIN_ORD, read_file, save_result
 
 def decrypt(word, encrypted):
     """ Decrypts given word using Caesar cipher. """
@@ -11,30 +9,41 @@ def decrypt(word, encrypted):
     elements = []
     for index, letter in enumerate(word):
         code = ord(letter)
-        encCode = ord(encrypted[index])
+        encrypted_code = ord(encrypted[index])
 
-        val = MAX-code + encCode-MIN + 1 if (code>encCode) else encCode-code
+        val = MAX_ORD-code + encrypted_code-MIN_ORD + 1 if (
+            code > encrypted_code) else encrypted_code - code
+
         elements.append(val)
-    
+
     res = all(el == elements[0] for el in elements)
 
     return word if not res else False
 
-wordsFile = readFile("3")
+def find_incorrectly_encrypted_words_in_file_3():
+    """ Finds incorrectly encrypted words. """
 
-for word in wordsFile:
+    incorrectly_encrypted_words = ""
 
-    bothVersions = word.split(" ")
-    
-    bothVersions[1] = bothVersions[1].replace("\n", "")
+    words_file = read_file(3)
 
-    decrypted = decrypt(*bothVersions)
+    for word in words_file:
 
-    if (decrypted != False): res+=decrypted+"\n"
+        both_versions = word.split(" ")
 
-wordsFile.close()
+        both_versions[1] = both_versions[1].replace("\n", "")
 
-resultFile = saveResult("3")
-resultFile.truncate(0)
-resultFile.write(res)
-resultFile.close()
+        decrypted = decrypt(*both_versions)
+
+        if decrypted:
+            incorrectly_encrypted_words += decrypted + "\n"
+
+    return incorrectly_encrypted_words
+
+def write_incorrectly_encrypted_words_to_file_3(text):
+    """ Saves incorrectly encrypted words to a file. """
+
+    save_result(3, text)
+
+INCORRECTLY_ENCRYPTED_WORDS_STRING = find_incorrectly_encrypted_words_in_file_3()
+write_incorrectly_encrypted_words_to_file_3(INCORRECTLY_ENCRYPTED_WORDS_STRING)

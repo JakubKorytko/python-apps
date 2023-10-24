@@ -1,18 +1,32 @@
-""" A module that counts the most common letter from a file with commands. """
+""" A module that counts the most frequently added character from a file of commands. """
 
-from data import data
-from handle import handle, alph
+from data.file_handler import data
 
-count = dict.fromkeys(alph, 0)
-text = ""
+def get_letters_occurences():
+    """ Returns a dictionary with added letters occurences. """
 
-for command in data():
-    command_stripped = command.strip()
-    commandArray = command_stripped.split(" ")
-    if (commandArray[0]=="ADD"):
-        count[commandArray[1]] += 1
-    text = handle(text, command_stripped)
+    occurences = {}
 
-max_count = max(count)
+    for command_line in data():
 
-print("Task 3:",max_count,count[max_count])
+        [command, arg] = command_line.strip().split(" ")
+
+        if command != "ADD":
+            continue
+
+        if occurences.get(arg) is None:
+            occurences[arg] = 0
+
+        occurences[arg] += 1
+
+
+    return occurences
+
+LETTERS_OCCURENCES = get_letters_occurences()
+MOST_FREQUENTLY_ADDED_LETTER = max(LETTERS_OCCURENCES, key=LETTERS_OCCURENCES.get)
+MOST_FREQUENTLY_ADDED_LETTER_COUNT = LETTERS_OCCURENCES[MOST_FREQUENTLY_ADDED_LETTER]
+
+print("Task 3:",
+      MOST_FREQUENTLY_ADDED_LETTER,
+      MOST_FREQUENTLY_ADDED_LETTER_COUNT
+)

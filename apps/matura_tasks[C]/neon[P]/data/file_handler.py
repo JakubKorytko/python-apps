@@ -7,7 +7,7 @@ script_dir = os.path.dirname(__file__)
 def data():
     """ Returns data from file. """
 
-    txt_path = "data/instructions.txt"
+    txt_path = "instructions.txt"
     file = os.path.join(script_dir, txt_path)
 
     return open(file, encoding="utf-8")

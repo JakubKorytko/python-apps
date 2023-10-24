@@ -1,42 +1,48 @@
 """ Decrypts given text using Cezar cipher. """
 
-from data import *
-
-res = ""
+from data.handler import MIN_ORD, MAX_ORD, DIFF, read_file, save_result
 
 def decrypt(word,k):
     """ Decrypts given word using Caesar cipher. """
-    
-    result = ""
-    
-    for letter in word:
-        
-        letterCode = ord(letter)
-        
-        if (letterCode>=MIN and letterCode<=MAX):
-            letterCode-=(k%DIFF)
 
-            if (letterCode<MIN):
-                letterCode=MAX-(MIN%letterCode)+1
-            
-            result+=chr(letterCode)
+    result = ""
+
+    for letter in word:
+
+        letter_code = ord(letter)
+
+        if MAX_ORD >= letter_code >= MIN_ORD:
+            letter_code -= (k % DIFF)
+
+            if letter_code < MIN_ORD:
+                letter_code = MAX_ORD - ( MIN_ORD % letter_code) + 1
+
+            result += chr(letter_code)
 
     return result
 
-wordsFile = readFile("2")
+def decrypt_text_from_file_2():
+    """ Decrypts text from file 2. """
 
-for word in wordsFile:
-    
-    wordAndKey = word.split(" ")
-    wordAndKey[1] = wordAndKey[1].replace("\n", "")
+    decrypted_text = ""
 
-    wordAndKey[1] = 0 if wordAndKey[1] == '' else int(wordAndKey[1])
-    
-    res+=decrypt(*wordAndKey)+"\n"
+    words_file = read_file(2)
 
-wordsFile.close()
+    for word in words_file:
 
-resultFile = saveResult("2")
-resultFile.truncate(0)
-resultFile.write(res)
-resultFile.close()
+        [word, key] = word.split(" ")
+        key = key.replace("\n", "")
+
+        key = 0 if key == '' else int(key)
+
+        decrypted_text += decrypt(word, key) + "\n"
+
+    return decrypted_text
+
+def write_decrypted_text_to_file_2(text):
+    """ Writes decrypted text to file 2. """
+
+    save_result(2, text)
+
+DECRYPTED_TEXT = decrypt_text_from_file_2()
+write_decrypted_text_to_file_2(DECRYPTED_TEXT)

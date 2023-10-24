@@ -2,10 +2,10 @@
 
 import math
 
-def key_to_int_list(key):
-    """ Converts list of strings to list of integers. """
+def key_to_int_list(key_string):
+    """ Converts list of chars/strings to list of integers. """
 
-    key_list = key.split(",")
+    key_list = key_string.split(",")
     key_int_list = []
 
     for key in key_list:
@@ -21,9 +21,9 @@ def split_into_columns(code, lengths, columns_number):
     for _ in range(0, columns_number):
         columns.append([])
 
-    for x in range(0, columns_number):
-        for _ in range(0, lengths[x]):
-            columns[x].append(code[0])
+    for index in range(0, columns_number):
+        for _ in range(0, lengths[index]):
+            columns[index].append(code[0])
             code = code[1:]
 
     return columns
@@ -33,9 +33,9 @@ def read_letters_in_proper_order(columns, key_to_indices):
 
     result = []
 
-    while sum(len(x) for x in columns) > 0:
-        for x in range(0, len(columns)):
-            i = key_to_indices[x]
+    while sum(len(letter) for letter in columns) > 0:
+        for index in range(0, len(columns)):
+            i = key_to_indices[index]
             if len(columns[i]) > 0:
                 result.append(columns[i].pop(0))
 
