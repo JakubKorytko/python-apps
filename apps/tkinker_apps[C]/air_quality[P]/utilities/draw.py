@@ -1,5 +1,6 @@
 """ A module for drawing elements on the canvas. """
-from tkinter import *
+
+from tkinter import EW, NS, Label, Button, Radiobutton
 
 class Draw:
     """ A class for drawing elements on the canvas. """
@@ -13,18 +14,18 @@ class Draw:
     def city(canvas, text, grid):
         """ Draws a city label. """
 
-        cityLabel = Label(canvas, text=text, background='white', font=Draw.font)
-        cityLabel.grid(column=0, row=grid["row"], columnspan=grid["columnspan"], sticky=EW)
+        city_label = Label(canvas, text=text, background='white', font=Draw.font)
+        city_label.grid(column=0, row=grid["row"], columnspan=grid["columnspan"], sticky=EW)
 
     @staticmethod
-    def selectStation(canvas, callback):
+    def select_station(canvas, callback):
         """ Draws a button for selecting a station. """
 
         button = Button(canvas, text='Change station', command=callback)
         button.grid(column=0, row=1, columnspan=2, sticky=EW)
-    
+
     @staticmethod
-    def stationButton(canvas, value, variable, callback):
+    def station_button(canvas, value, variable, callback):
         """ Draws a radio button for selecting a station. """
 
         button = Radiobutton(canvas, variable=variable, value=value, command=callback)
@@ -35,11 +36,15 @@ class Draw:
     def sensor(canvas, sensor, coords):
         """ Draws a sensor. """
 
-        kName = Label(canvas, text=sensor["name"], font=Draw.font)
-        kVal = Label(canvas, text=Draw.translate(sensor["value"]), fg=Draw.color(sensor["value"]), font=Draw.font)
+        k_name = Label(canvas, text=sensor["name"], font=Draw.font)
 
-        kName.grid(column=coords["y"], row=coords["x"], sticky=NS)
-        kVal.grid(column=coords["y"]+1,row=coords["x"], sticky=NS)
+        k_val = Label(canvas,
+        text=Draw.translate(sensor["value"]), fg=Draw.color(sensor["value"]),
+        font=Draw.font
+        )
+
+        k_name.grid(column=coords["y"], row=coords["x"], sticky=NS)
+        k_val.grid(column=coords["y"]+1,row=coords["x"], sticky=NS)
 
     @staticmethod
     def color(desc):
@@ -47,22 +52,26 @@ class Draw:
 
         if desc == 'Bardzo dobry':
             return '#00FF00'
-        elif desc == 'Dobry':
+
+        if desc == 'Dobry':
             return '#FFA500'
-        elif desc == 'Umiarkowany':
+
+        if desc == 'Umiarkowany':
             return '#000000'
-        else:
-            return '#FF0000'
-    
+
+        return '#FF0000'
+
     @staticmethod
     def translate(text):
         """ Translates a description to English. """
 
         if text == 'Bardzo dobry':
             return 'Very good'
-        elif text == 'Dobry':
+
+        if text == 'Dobry':
             return 'Good'
-        elif text == 'Umiarkowany':
+
+        if text == 'Umiarkowany':
             return 'Moderate'
-        else:
-            return 'Bad'
+
+        return 'Bad'

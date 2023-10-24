@@ -1,74 +1,99 @@
 """ A module for fetching data from the API and returning it in a usable format. """
 
-import requests
+from sys import exit as sys_exit
 import json
 import re
+import requests
 
 class API:
+    """ A class for fetching data from the API and returning it in a usable format. """
+
+    REQUESTS_TIMEOUT = 10
 
     @staticmethod
     def fetch():
         """ Fetches data from the API and returns it in a usable format. """
 
         try:
-            apiRequestsCity = requests.get("http://api.gios.gov.pl/pjp-api/rest/station/findAll")
-            apiCity = json.loads(apiRequestsCity.content)
-        except Exception:
+            api_requests_city = requests.get("http://api.gios.gov.pl/pjp-api/rest/station/findAll",
+            timeout=API.REQUESTS_TIMEOUT)
+
+            api_city = json.loads(api_requests_city.content)
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
             API.api_error()
 
         stations = []
         options = []
 
-        for x in apiCity:
-            if (x["city"]["name"] == "Kraków" or x["city"]["commune"]["districtName"] == "krakowski"):
+        for station_data in api_city:
+            if (station_data["city"]["name"] == "Kraków" or
+                station_data["city"]["commune"]["districtName"] == "krakowski"):
+
                 try:
-                    sensors = requests.get("http://api.gios.gov.pl/pjp-api/rest/station/sensors/"+str(x['id']))
-                    indexes = requests.get("http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+str(+x['id']))
+                    sensors = requests.get(
+                        "http://api.gios.gov.pl/pjp-api/rest/station/sensors/"
+                        + str(station_data['id']),
+                        timeout=API.REQUESTS_TIMEOUT
+                    )
+
+                    indexes = requests.get(
+                        "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"
+                        + str(+station_data['id']),
+                        timeout=API.REQUESTS_TIMEOUT
+                    )
+
                     sensors = json.loads(sensors.content)
                     indexes = json.loads(indexes.content)
-                except Exception:
+
+                except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
                     API.api_error()
-            
-                cutSensors = []
-                
+
+                cut_sensors = []
+
                 for sensor in sensors:
-                    sensorName = sensor["param"]["paramFormula"]
+                    sensor_name = sensor["param"]["paramFormula"]
 
 
-                    sensorValue = sensorName.lower()
-                    sensorValue = re.sub("\.", "", sensorValue)
-                    sensorValue = sensorValue+'IndexLevel'
+                    sensor_value = sensor_name.lower()
+                    sensor_value = re.sub(r"\.", "", sensor_value)
+                    sensor_value = sensor_value+'IndexLevel'
 
-                    if (sensorValue in indexes and indexes[sensorValue] != None and 'indexLevelName' in indexes[sensorValue]):
-                        sensorValue = indexes[sensorValue]['indexLevelName']
+                    if (sensor_value in indexes
+                        and indexes[sensor_value] is not None
+                        and 'indexLevelName' in indexes[sensor_value]
+                    ):
+                        sensor_value = indexes[sensor_value]['indexLevelName']
                     else:
                         continue
 
-                    cutSensors.append({
-                        'name': sensorName,
-                        'value': sensorValue
+                    cut_sensors.append({
+                        'name': sensor_name,
+                        'value': sensor_value
                     })
 
-                stations.append({
-                "stationName": x["stationName"],
-                "id": x["id"],
-                "sensors": cutSensors,
-                })
+                stations.append(
+                {
+                "stationName": station_data["stationName"],
+                "id": station_data["id"],
+                "sensors": cut_sensors,
+                }
+                )
 
-                options.append(x["stationName"])
+                options.append(station_data["stationName"])
 
         return {
             "stations": stations,
             "options": options
         }
-    
+
     @staticmethod
     def api_error():
         """ Displays an error message and exits the program. """
 
         print("There was an error while fetching data from API. Please try again later.")
-        print("Check if the API is working properly: http://api.gios.gov.pl/pjp-api/rest/station/findAll")
+        print("Check if the API is working properly:", end=" ")
+        print("http://api.gios.gov.pl/pjp-api/rest/station/findAll")
         print("Also check if you have an internet connection.")
         print("If the problem persists, please contact the developer.")
         print("Exiting...")
-        exit()
+        sys_exit()

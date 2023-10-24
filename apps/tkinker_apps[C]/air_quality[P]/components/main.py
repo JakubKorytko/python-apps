@@ -1,33 +1,36 @@
 """ Main component for the air_quality app. """
 
-from tkinter import *
+from tkinter import Tk
 
 class Main():
+    """ A class for the main module. """
 
-    firstGenerate = True
+    first_generate = True
 
     def __init__(self, options, stations):
         """ Initializes the app. """
 
+        self.root = None
+
         self.options = options
         self.stations = stations
 
-    def rootInit(self):
+    def root_init(self):
         """ Initializes the root window. """
 
         self.root = Tk()
         self.root.title("Air quality in Cracow")
 
-        appWidth = 350
-        appHeight = 400
+        app_width = 350
+        app_height = 400
 
-        screenWidth = self.root.winfo_screenwidth()
-        screenHeight = self.root.winfo_screenheight()
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
 
-        x = (screenWidth / 2) - (appWidth / 2)
-        y = (screenHeight / 2) - (appHeight / 2)
+        x_pos = (screen_width / 2) - (app_width / 2)
+        y_pos = (screen_height / 2) - (app_height / 2)
 
-        self.root.geometry(f'{appWidth}x{appHeight}+{int(x)}+{int(y)}')
+        self.root.geometry(f'{app_width}x{app_height}+{int(x_pos)}+{int(y_pos)}')
         self.root.protocol("WM_DELETE_WINDOW", self.destroy)
         self.root.configure(background='white')
 

@@ -1,8 +1,7 @@
 """ Functions for preparing data for the app. """
 
-from utilities.generation import Generating, Draw
-from utilities.api import API
 from config import get_config
+from utilities import UIHandler, Draw, API
 from components import Dropdown, Menu, Main
 
 def get_dropdown_bool():
@@ -30,7 +29,7 @@ def set_handler(use_dropdown, app_data):
         handler = Dropdown(app_data["data"]["options"],
         app_data["ui_gen"].generate, app_data["app"].root)
 
-        handler.rootInit()
+        handler.root_init()
 
     return handler
 
@@ -38,15 +37,27 @@ def get_app_data():
     """ Prepares data for the app. """
 
     data = API.fetch()
-    ui_gen = Generating()
+    ui_gen = UIHandler()
     app = Main(data["options"], data["stations"])
-    app.rootInit()
+    app.root_init()
 
     return {
         "data": data,
         "ui_gen": ui_gen,
         "app": app
     }
+
+def set_drawing_methods(app_data):
+    """ Sets the drawing methods. """
+
+    draw_methods = {
+        "city": Draw.city,
+        "station_button": Draw.station_button,
+        "select_station": Draw.select_station,
+        "sensor": Draw.sensor
+    }
+
+    app_data["ui_gen"].set_drawing_methods(draw_methods)
 
 def get_ui_gen_data(app_data, use_dropdown, handler):
     """ Returns ui_gen data. """
@@ -73,3 +84,4 @@ def generate_ui(app_data):
     set_font_from_config_file()
 
     app_data["ui_gen"].generate()
+    

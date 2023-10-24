@@ -1,8 +1,10 @@
 """ Module for dropdown component. """
 
-from tkinter import *
+from tkinter import OptionMenu, StringVar
 
-class Dropdown:        
+class Dropdown:
+    """ A class for the dropdown component. """
+
     def __init__(self, options, callbackfunc, root):
         """ Constructor. """
 
@@ -11,14 +13,14 @@ class Dropdown:
         self.generate = callbackfunc
         self.clicked = StringVar()
 
-    def callback(self, *args):
+    def callback(self, *_):
         """ Callback function. """
 
         val = self.clicked.get()
         index = self.options.index(val)
         self.generate(index)
 
-    def rootInit(self):
+    def root_init(self):
         """ Initializes the dropdown. """
 
         self.clicked.trace("w", self.callback)
