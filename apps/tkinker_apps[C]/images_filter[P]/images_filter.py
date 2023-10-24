@@ -1,27 +1,31 @@
 """ App that filters images from a list of urls. """
 
-images = [
-    "https://picsum.photos/id/1/512",
-    "https://picsum.photos/id/2/512",
-    "https://picsum.photos/id/3/512",
-    "https://picsum.photos/id/4/512",
-    "https://picsum.photos/id/5/512"
-]
-# You can change the images list above to use your own images.
-
-from tkinter import *
+from tkinter import Tk, Label, Button, DISABLED, SUNKEN, E, W
 from PIL import ImageTk, Image, ImageFilter
+from json import load as json_load
 import requests
+
+def load_images_from_json():
+    """ Loads images from a images.json file. """
+
+    try:
+        with open("images.json", "r", encoding="utf-8") as file:
+            images = json_load(file)
+    except FileNotFoundError:
+        images = []
+    return images
+
+IMAGES = load_images_from_json()
 
 root = Tk()
 root.title("Image Filter App")
 
 print("\nWelcome to my image filter app!")
 print("In order to use this app, you need to have an internet connection.")
-print("If you want to use your own images, you can change the images list in the code at the top of the file.\n")
+print("If you want to use your own images, you can change the images list in the images.json file.\n")
 
-if (len(images)==0):
-    print("You need to add at least one image to the images list in the code.")
+if (len(IMAGES)==0):
+    print("You need to add at least one image to the images list in the images.json file.")
     print("Exiting...")
     exit()
 
@@ -46,13 +50,13 @@ def generateList(filter="none"):
     """ Returns a list of images. """
 
     converted = []
-    for image in images:
+    for image in IMAGES:
         try:
             item = getImage(image, filter)
             converted.append(item)
-            print("Image " + str(images.index(image) + 1) + " of " + str(len(images)) + " generated.")
+            print("Image " + str(IMAGES.index(image) + 1) + " of " + str(len(IMAGES)) + " generated.")
         except:
-            print("Error generating image " + str(images.index(image) + 1) + " of " + str(len(images)) + ".")
+            print("Error generating image " + str(IMAGES.index(image) + 1) + " of " + str(len(IMAGES)) + ".")
     return converted
 
 def generateImages():
