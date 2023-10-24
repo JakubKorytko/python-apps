@@ -1,36 +1,11 @@
 """ Entry point for air_quality app """
 
-from utilities.generation import Generating
-from utilities.api import API
-from config import config
-from tkinter import *
-from components import *
+from app_data import get_app_data, generate_ui
 
-dropdown, menu = None, None
+APP_DATA = get_app_data()
 
-useDropdown = config["dropdown?"]
+generate_ui(APP_DATA)
 
-uiGen = Generating()
+APP = APP_DATA["app"]
 
-data = API.fetch()
-
-app = Main(data["options"], data["stations"])
-app.rootInit()
-
-if not useDropdown: menu = Menu(data["options"])
-
-if (useDropdown):
-    dropdown = Dropdown(data["options"], uiGen.generate, app.root)
-    dropdown.rootInit()
-
-use = {
-    'app': app,
-    'dropdown': dropdown if useDropdown else None,
-    'menu': menu if not useDropdown else None
-}
-
-uiGen.assign(**use)
-
-uiGen.generate()
-
-app.root.mainloop()
+APP.root.mainloop()

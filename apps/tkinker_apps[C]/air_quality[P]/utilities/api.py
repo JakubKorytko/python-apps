@@ -39,7 +39,7 @@ class API:
                     sensorValue = re.sub("\.", "", sensorValue)
                     sensorValue = sensorValue+'IndexLevel'
 
-                    if (sensorValue in indexes):
+                    if (sensorValue in indexes and indexes[sensorValue] != None and 'indexLevelName' in indexes[sensorValue]):
                         sensorValue = indexes[sensorValue]['indexLevelName']
                     else:
                         continue

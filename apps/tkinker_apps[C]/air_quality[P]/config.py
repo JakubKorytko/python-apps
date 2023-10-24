@@ -6,9 +6,12 @@ import os
 # dropdown? - set this to false in order to open city selection in new window instead of dropdown
 # font - set font name and size
 
-script_dir = os.path.dirname(__file__)
-txt_path = "config.json"
-file = os.path.join(script_dir, txt_path)
+def get_config():
+    """ Returns config from config.json. """
 
-file = open(file, "r")
-config = json.load(file)
+    script_dir = os.path.dirname(__file__)
+    txt_path = "config.json"
+    file = os.path.join(script_dir, txt_path)
+
+    with open(file, "r", encoding="utf-8") as file:
+        return json.load(file)

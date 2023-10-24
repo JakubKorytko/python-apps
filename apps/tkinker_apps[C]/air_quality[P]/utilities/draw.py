@@ -1,11 +1,13 @@
 """ A module for drawing elements on the canvas. """
-
-from config import config
 from tkinter import *
 
 class Draw:
+    """ A class for drawing elements on the canvas. """
 
-    font=(config["font"]["name"], config["font"]["size"])
+    @staticmethod
+    def set_font(config):
+        """ Sets the font. """    
+        Draw.font = (config["font"]["name"], config["font"]["size"])
 
     @staticmethod
     def city(canvas, text, grid):
