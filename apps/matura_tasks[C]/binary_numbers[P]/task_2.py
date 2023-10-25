@@ -1,9 +1,13 @@
 """ A module that counts numbers divisible by 2 or 8 from a file with binary numbers. """
 
+from os import path as os_path
+
 def count_lines_divisible_by_2_or_8():
     """ Returns number of lines in file 'numbers.txt' that are divisible by 2 and 8. """
 
-    with open("numbers.txt", "r", encoding="utf-8") as file:
+    numbers_path = os_path.join(os_path.dirname(__file__), "numbers.txt")
+
+    with open(numbers_path, "r", encoding="utf-8") as file:
         count_divisible_by_2 = 0
         count_divisible_by_8 = 0
         for line in file:

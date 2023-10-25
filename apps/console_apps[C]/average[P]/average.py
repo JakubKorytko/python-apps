@@ -1,7 +1,7 @@
 """ App to calculate grade point average """
 
 from re import sub as re_sub
-from os import path
+from os import path as os_path
 from sys import exit as sys_exit
 
 def error(grade):
@@ -14,9 +14,11 @@ def error(grade):
 def get_grades():
     """ Gets grades from the file or from the user input """
 
-    if path.exists("grades.txt"):
+    grades_path = os_path.join(os_path.dirname(__file__), "grades.txt")
 
-        with open("grades.txt", "r", encoding="utf-8") as grades_file:
+    if os_path.exists(grades_path):
+
+        with open(grades_path, "r", encoding="utf-8") as grades_file:
             print("file found!")
             return grades_file.read()
 

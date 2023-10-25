@@ -2,6 +2,7 @@
 
 from json import load as json_load
 from sys import exit as sys_exit
+from os import path as os_path
 from tkinter import Tk
 from PIL import ImageTk, Image, ImageFilter
 import requests
@@ -20,8 +21,10 @@ def get_available_filters():
 def load_images_from_json():
     """ Loads images from a images.json file. """
 
+    images_json_path = os_path.join(os_path.dirname(__file__), "../images.json")
+
     try:
-        with open("images.json", "r", encoding="utf-8") as file:
+        with open(images_json_path, "r", encoding="utf-8") as file:
             images = json_load(file)
     except FileNotFoundError:
         images = []
