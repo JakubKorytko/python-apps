@@ -3,17 +3,19 @@
 from colored import fg, attr
 
 class Text:
+    """ Text class for displaying formatted text in the terminal. """
+
     @staticmethod
     def rainbow(text, colors, start):
         """ Returns a rainbow-colored text. """
 
-        coloredText = ""
+        colored_text = ""
 
-        for i in range(len(text)):
+        for i, letter in enumerate(text):
             color = start + i % colors
-            coloredText += fg(color) + text[i]
+            colored_text += fg(color) + letter
 
-        return coloredText + attr('reset')
+        return colored_text + attr('reset')
 
     @staticmethod
     def display(text, color="white"):

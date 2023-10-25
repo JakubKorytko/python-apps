@@ -1,31 +1,39 @@
-""" This module defines a class called 'Menu' that offers a text-based menu for interacting with a selection of Python applications.
-Users can choose categories and programs to run, get descriptions, and navigate through the menu. """
+""" This module defines a class called 'Menu'
+that offers a text-based menu for interacting with a selection of Python applications.
+Users can choose categories and programs to run,
+get descriptions, and navigate through the menu. """
 
-from explorer.submodules.text import Text
-from explorer.handler import Explorer
 from random import randint
-import re
-import os
+from sys import exit as sys_exit
+from re import search as re_search, sub as re_sub
+from os import path as os_path
+from explorer import Text
+from explorer import Explorer
 
 colorsRange = [120,229] # excluded dark colors
 
 class Menu:
+    """ Menu class for interacting with a selection of Python applications. """
+
     @staticmethod
     def welcome():
         """ Returns a rainbow-colored welcome message. """
 
         welcome = "\nWelcome to the python-apps menu! Here you can select what app you want to run!"
-        start = randint(colorsRange[0], colorsRange[1]-len(welcome))
-        colors = colorsRange[1]-start
+        start = randint(colorsRange[0], colorsRange[1] - len(welcome))
+        colors = colorsRange[1] - start
         return Text.rainbow(welcome, colors, start)
 
     @staticmethod
     def print_menu(options):
         """ Prints the menu. """
 
-        Text.display("[C] means an option is a category, if you select a category, it will list the programs inside of it to select", "green")
-        Text.display("[P] means an option is a program, if you select a program, it will run it", "green")
-        Text.display("[?] Enter a number followed by a ? to get description of the category/program (e.g. 1?)\n", "green")
+        Text.display("[C] means an option is a category, if you select a category, "
+        + "it will list the programs inside of it to select", "green")
+        Text.display("[P] means an option is a program, "
+        + "if you select a program, it will run it", "green")
+        Text.display("[?] Enter a number followed by a ? to get description "
+        + "of the category/program (e.g. 1?)\n", "green")
 
         for index, item in enumerate(options):
             name = item["name"]
@@ -42,12 +50,14 @@ class Menu:
         print()
 
     @staticmethod
-    def findByName(options, name):
+    def find_by_name(options, name):
         """ Returns an option with the given name. """
 
         for option in options:
             if option["name"] == name:
                 return option
+
+        return None
 
     @staticmethod
     def handle_choice(choice, selected):
@@ -55,68 +65,81 @@ class Menu:
 
         match(choice):
             case {"type": "exit"}:
-                exit()
+                sys_exit()
             case {"type": "back"}:
                 selected.pop()
             case {"type": "category"}:
                 selected.append(choice["name"])
             case {"type": "program"}:
-                Explorer.run(os.path.join(choice["path"],choice["exec"]))
-            
+                Explorer.run(os_path.join(choice["path"],choice["exec"]))
+
         return selected
-    
+
     @staticmethod
-    def generateOptions(options, selected):
+    def generate_options(options, selected):
         """ Generates the menu options. """
 
         option = options
 
-        for s in selected:
-            option = Menu.findByName(option["subcategories"], s)
+        for select in selected:
+            option = Menu.find_by_name(option["subcategories"], select)
 
-        menuOptions = [*option["subcategories"], *option["apps"]]
+        menu_options = [*option["subcategories"], *option["apps"]]
 
-        if (selected == []):
-            menuOptions.append({"name": "exit", "type": "exit", "desc": "Exit the app"})
+        if selected == []:
+            menu_options.append(
+                {
+                    "name": "exit",
+                    "type": "exit",
+                    "desc": "Exit the app"
+                }
+            )
         else:
-            menuOptions.append({"name": "back", "type": "back", "desc": "Go back to the previous directory"})
+            menu_options.append(
+                {
+                    "name": "back",
+                    "type": "back",
+                    "desc": "Go back to the previous directory"
+                }
+            )
 
-        return menuOptions
-    
+        return menu_options
+
     @staticmethod
-    def limits(min, val, max):
+    def limits(min_val, val, max_val):
         """ Checks if a value is between two other values. """
 
-        return int(min) <= int(val) <= int(max)
+        return int(min_val) <= int(val) <= int(max_val)
 
     @staticmethod
-    def errorBoundary(choice, opt):
+    def error_boundary(choice, opt):
         """ Checks if the user's choice is valid. """
 
-        res = {"skip": False, "showMenu": True}
+        res = {"skip": False, "show_menu": True}
 
-        if (choice.strip() == ""): return [*{"skip": True, "showMenu": False}.values()]
+        if choice.strip() == "":
+            return [*{"skip": True, "show_menu": False}.values()]
 
-        QuestionMark = re.search("^\d+\?$", choice.strip())
-        NonDigit = re.search("\D", choice)
-        OutOfRange = not Menu.limits(1, choice, len(opt)) if not NonDigit else False
+        question_mark = re_search(r"^\d+\?$", choice.strip())
+        non_digit = re_search(r"\D", choice)
+        out_of_range = not Menu.limits(1, choice, len(opt)) if not non_digit else False
 
-        res["skip"] = True if (QuestionMark or NonDigit or OutOfRange) else False
+        res["skip"] = bool(question_mark or non_digit or out_of_range)
 
-        if QuestionMark:
-            ind = re.sub("\?", "", choice.strip())
+        if question_mark:
+            ind = re_sub(r"\?", "", choice.strip())
 
-            if (Menu.limits(1, ind, len(opt))):
+            if Menu.limits(1, ind, len(opt)):
                 Text.display(opt[int(ind)-1]["desc"]+"\n", "yellow")
                 input("Press enter to continue...")
                 print("")
-            else: 
-                res = {"skip": True, "showMenu": False}
+            else:
+                res = {"skip": True, "show_menu": False}
                 Text.display("Error: Invalid choice.\n", "red")
-            
-        elif NonDigit or OutOfRange:
+
+        elif non_digit or out_of_range:
             Text.display("Error: Invalid choice.\n", "red")
-            res = {"skip": True, "showMenu": False}
+            res = {"skip": True, "show_menu": False}
 
         return [*res.values()]
 
@@ -128,17 +151,18 @@ class Menu:
 
         selected = []
         choice = "-1"
-        showMenu = True
-        
-        while True:
-            if (showMenu): 
-                opt = Menu.generateOptions(options, selected)
-                Menu.print_menu(opt)
-            
-            choice = input(f"Enter your choice (1-{len(opt)}): ")
-            [skip, showMenu] = Menu.errorBoundary(choice, opt)
+        show_menu = True
 
-            if skip: continue
-            
+        while True:
+            if show_menu:
+                opt = Menu.generate_options(options, selected)
+                Menu.print_menu(opt)
+
+            choice = input(f"Enter your choice (1-{len(opt)}): ")
+            [skip, show_menu] = Menu.error_boundary(choice, opt)
+
+            if skip:
+                continue
+
             selected = Menu.handle_choice(opt[int(choice)-1], selected)
             print()
