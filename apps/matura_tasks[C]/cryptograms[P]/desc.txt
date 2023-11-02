@@ -3,11 +3,11 @@ This application solves the described problem:
 <Cryptograms>
 
 
-1. Decrypt the cryptogram: LYRNAOHDCPUAS encrypted using the columnar method. The following was used here
+1. Decrypt the cryptogram: LYRNAOHDCPUAS encrypted using the columnar transposition cipher. The following was used here
 a two-dimensional array containing 3 columns and the key: 2, 0, 1. Spaces were omitted during encryption
 
-2. Write a program that decrypts any cryptogram using the column method with the ability to enter the number of
-columns and the key. Skip spaces when encrypting.
+2. Write a program that decrypts any cryptogram using the columnar transposition cipher
+with the possibility to specify the number of columns and the key. Skip spaces when encrypting.
 
-3. Encrypt the text using the fence method: A QUICK BROWN FOX JUMPS OVER THE LAZY DOG. Apply the fence
-height 2. Skip spaces when encrypting.
+3. Encrypt the text using the rail fence cipher: A QUICK BROWN FOX JUMPS OVER THE LAZY DOG.
+Apply the fence height 2. Skip spaces when encrypting.
