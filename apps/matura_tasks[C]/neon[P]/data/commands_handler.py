@@ -26,3 +26,13 @@ def handle(text, command_line):
             ind=0
         text = text.replace(arg, alph[ind], 1)
     return text
+
+def process_commands(data):
+    """ Process all commands and returns the final text. """
+
+    result = ""
+
+    for command in data:
+        result = handle(result, command.strip())
+
+    return result
