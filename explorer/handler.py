@@ -7,7 +7,7 @@ from sys import exit as sys_exit
 from os import path as os_path, listdir as os_listdir
 from re import search as re_search
 from subprocess import call as subprocess_call
-from explorer import Text
+from explorer.submodules import Text
 
 class Explorer:
     """ Explorer class for exploring a directory structure containing programs and categories. """
