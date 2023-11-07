@@ -8,7 +8,7 @@ build/
 *.egg-info/
 
 # Tasks results
-wyniki/
+results/
 
 # Virtual environments
 venv/
