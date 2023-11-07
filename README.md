@@ -1,14 +1,14 @@
 # Python apps
 
 - [Python apps](#python-apps)
-- [Description](#description)
-- [Available programs](#available-programs)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
+  - [Description](#description)
+  - [Available programs](#available-programs)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
 
-# Description
+## Description
 
 "python-apps" is a console app with a menu from which you can choose many programs coded in Python, including graphical ones. The program scans the "apps" directory (which can be changed in the "main.py" file) and finds programs based on the following rules:
 
@@ -20,7 +20,7 @@
 
 "Program" folders can contain a "desc.txt" file, program files and folders, and a "main.py" file. Without a "main.py" file, the program cannot be run from the console menu. The "desc.txt" file is read when the user selects the corresponding option in the menu. It can contain a description of the program.
 
-# Available programs
+## Available programs
 
 The "python-apps" program comes with many apps included:
 
@@ -48,7 +48,7 @@ This program calculates the grade point average based on a "grades.txt" file in 
 You can add new programs and categories and change existing ones.
 
 
-# Prerequisites
+## Prerequisites
 Before you can run the "python-apps" program, you will need to have the following installed on your system:
 
 - [Python 3](https://www.python.org/downloads/)
@@ -66,7 +66,7 @@ To check if you have pip installed, run the following command:
 pip --version
 ```
 
-# Installation
+## Installation
 To install "python-apps", follow these steps:
 
 1. Clone the repository to your local machine using the following command:
@@ -75,7 +75,7 @@ To install "python-apps", follow these steps:
 git clone https://github.com/JakubKorytko/python-apps.git
 ```
 
-2. Navigate to the main app directory using the command line interface.
+2. Navigate to the main app directory using the command-line interface.
 
 ```bash
 cd python-apps
@@ -95,7 +95,7 @@ Once you have installed the required packages, you can run the program by naviga
 python main.py
 ```
 
-# Usage
+## Usage
 
 To use the "python-apps" program, run the following command:
 
@@ -105,6 +105,6 @@ python main.py
 
 This will start the program and display the main menu. From there, you can navigate the menu and run the programs.
 
-# License
+## License
 
 This project uses the following license: [MIT](https://choosealicense.com/licenses/mit/)
