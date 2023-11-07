@@ -2,8 +2,9 @@
 
 from data.handler import MAX_ORD, MIN_ORD, read_file, save_result
 
+
 def decrypt(word, encrypted):
-    """ Decrypts given word using Caesar cipher. """
+    """Decrypts given word using Caesar cipher."""
 
     res = ""
     elements = []
@@ -11,8 +12,11 @@ def decrypt(word, encrypted):
         code = ord(letter)
         encrypted_code = ord(encrypted[index])
 
-        val = MAX_ORD-code + encrypted_code-MIN_ORD + 1 if (
-            code > encrypted_code) else encrypted_code - code
+        val = (
+            MAX_ORD - code + encrypted_code - MIN_ORD + 1
+            if (code > encrypted_code)
+            else encrypted_code - code
+        )
 
         elements.append(val)
 
@@ -20,15 +24,15 @@ def decrypt(word, encrypted):
 
     return word if not res else False
 
+
 def find_incorrectly_encrypted_words_in_file_3():
-    """ Finds incorrectly encrypted words. """
+    """Finds incorrectly encrypted words."""
 
     incorrectly_encrypted_words = ""
 
     words_file = read_file(3)
 
     for word in words_file:
-
         both_versions = word.split(" ")
 
         both_versions[1] = both_versions[1].replace("\n", "")
@@ -40,10 +44,12 @@ def find_incorrectly_encrypted_words_in_file_3():
 
     return incorrectly_encrypted_words
 
+
 def write_incorrectly_encrypted_words_to_file_3(text):
-    """ Saves incorrectly encrypted words to a file. """
+    """Saves incorrectly encrypted words to a file."""
 
     save_result(3, text)
+
 
 INCORRECTLY_ENCRYPTED_WORDS_STRING = find_incorrectly_encrypted_words_in_file_3()
 write_incorrectly_encrypted_words_to_file_3(INCORRECTLY_ENCRYPTED_WORDS_STRING)

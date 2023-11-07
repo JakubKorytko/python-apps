@@ -3,8 +3,9 @@ from one position to another. """
 
 from sys import exit as sys_exit
 
+
 def get_cycles(current_configuration, target_configuration):
-    """ Transform the array of the current elephant configuration into individual cycles """
+    """Transform the array of the current elephant configuration into individual cycles"""
 
     cycles = []
 
@@ -24,13 +25,16 @@ def get_cycles(current_configuration, target_configuration):
                 break
             current_cycle_elements.append(current_elephant)
             current_cycle.remove(current_elephant)
-            current_elephant = current_configuration[target_configuration.index(current_elephant)]
+            current_elephant = current_configuration[
+                target_configuration.index(current_elephant)
+            ]
         cycles.append(current_cycle_elements)
 
     return cycles
 
+
 def calculate_effort(current_configuration, elephant_weights, cycles):
-    """ Calculate the sum of effort values for each cycle """
+    """Calculate the sum of effort values for each cycle"""
 
     total_effort = 0
 
@@ -50,18 +54,18 @@ def calculate_effort(current_configuration, elephant_weights, cycles):
         for elephant_index in cycle:
             sum_in_cycle += elephant_weights[elephant_index - 1]
 
-        effort_method1 = (sum_in_cycle
-                        + (len(cycle) - 2)
-                        * min_weight_in_current_cycle)
+        effort_method1 = sum_in_cycle + (len(cycle) - 2) * min_weight_in_current_cycle
 
-        effort_method2 = (sum_in_cycle
-                        + min_weight_in_current_cycle
-                        + (len(cycle) + 1)
-                        * min_weight_in_array)
+        effort_method2 = (
+            sum_in_cycle
+            + min_weight_in_current_cycle
+            + (len(cycle) + 1) * min_weight_in_array
+        )
 
         total_effort += min(effort_method1, effort_method2)
 
     return total_effort
+
 
 #################################
 #                               #
@@ -77,7 +81,7 @@ try:
     m = list(map(int, input("").strip().split(" ")))
     a = list(map(int, input("").strip().split(" ")))
     b = list(map(int, input("").strip().split(" ")))
-except(ValueError, TypeError):
+except (ValueError, TypeError):
     print(0)
     sys_exit()
 

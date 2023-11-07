@@ -2,12 +2,13 @@
 
 from colored import fg, attr
 
+
 class Text:
-    """ Text class for displaying formatted text in the terminal. """
+    """Text class for displaying formatted text in the terminal."""
 
     @staticmethod
     def rainbow(text, colors, start):
-        """ Returns a rainbow-colored text. """
+        """Returns a rainbow-colored text."""
 
         colored_text = ""
 
@@ -15,10 +16,10 @@ class Text:
             color = start + i % colors
             colored_text += fg(color) + letter
 
-        return colored_text + attr('reset')
+        return colored_text + attr("reset")
 
     @staticmethod
     def display(text, color="white"):
-        """ Displays the given text in the given color. """
+        """Displays the given text in the given color."""
 
-        print(fg(color) + text + attr('reset'))
+        print(fg(color) + text + attr("reset"))

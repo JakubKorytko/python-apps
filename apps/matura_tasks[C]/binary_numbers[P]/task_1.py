@@ -2,8 +2,9 @@
 
 from os import path as os_path
 
+
 def numbers_with_more_zeros_than_ones():
-    """ Returns number of lines in file 'numbers.txt' that have more zeros than ones. """
+    """Returns number of lines in file 'numbers.txt' that have more zeros than ones."""
 
     numbers_with_more_zeros = 0
 
@@ -20,8 +21,9 @@ def numbers_with_more_zeros_than_ones():
 
         return numbers_with_more_zeros
 
+
 print("Task 1:\n")
 print(
     numbers_with_more_zeros_than_ones(),
-    "numbers have more zeros than ones in their binary notation\n"
+    "numbers have more zeros than ones in their binary notation\n",
 )

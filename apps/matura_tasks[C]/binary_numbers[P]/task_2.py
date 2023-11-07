@@ -2,8 +2,9 @@
 
 from os import path as os_path
 
+
 def count_lines_divisible_by_2_or_8():
-    """ Returns number of lines in file 'numbers.txt' that are divisible by 2 and 8. """
+    """Returns number of lines in file 'numbers.txt' that are divisible by 2 and 8."""
 
     numbers_path = os_path.join(os_path.dirname(__file__), "numbers.txt")
 
@@ -18,6 +19,7 @@ def count_lines_divisible_by_2_or_8():
                 count_divisible_by_8 += 1
 
     return [count_divisible_by_2, count_divisible_by_8]
+
 
 [DIVISIBLE_BY_2, DIVISIBLE_BY_8] = count_lines_divisible_by_2_or_8()
 

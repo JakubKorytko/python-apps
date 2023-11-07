@@ -7,19 +7,21 @@ from tkinter import Tk
 from PIL import ImageTk, Image, ImageFilter
 import requests
 
+
 def get_available_filters():
-    """ Returns a dictionary of available filters. """
+    """Returns a dictionary of available filters."""
 
     filters = {
         "BLUR": ImageFilter.BoxBlur(10),
         "EDGE_ENHANCE": ImageFilter.EDGE_ENHANCE_MORE,
-        "EMBOSS": ImageFilter.EMBOSS
+        "EMBOSS": ImageFilter.EMBOSS,
     }
 
     return filters
 
+
 def load_images_from_json():
-    """ Loads images from a images.json file. """
+    """Loads images from a images.json file."""
 
     images_json_path = os_path.join(os_path.dirname(__file__), "../images.json")
 
@@ -30,14 +32,17 @@ def load_images_from_json():
         images = []
 
     if len(images) == 0:
-        print("You need to add at least one image to the images list in the images.json file.")
+        print(
+            "You need to add at least one image to the images list in the images.json file."
+        )
         print("Exiting...")
         sys_exit()
 
     return images
 
-def get_image(url, filters, image_filter = "none"):
-    """ Returns an image from the given url. """
+
+def get_image(url, filters, image_filter="none"):
+    """Returns an image from the given url."""
 
     image = Image.open(requests.get(url, stream=True, timeout=10).raw)
     image = image.resize((512, 512))
@@ -45,14 +50,14 @@ def get_image(url, filters, image_filter = "none"):
         image = image.filter(filters[image_filter])
     return ImageTk.PhotoImage(image)
 
+
 def generate_list(filters, image_filter="none"):
-    """ Returns a list of images. """
+    """Returns a list of images."""
 
     images = load_images_from_json()
 
     converted = []
     for image in images:
-
         image_index = str(images.index(image) + 1)
         images_length = str(len(images))
 
@@ -66,8 +71,9 @@ def generate_list(filters, image_filter="none"):
             print(f"Error generating image {image_index} of {images_length}.")
     return converted
 
+
 def generate_images():
-    """ Returns a dictionary of filtered and unfiltered images. """
+    """Returns a dictionary of filtered and unfiltered images."""
 
     filters = get_available_filters()
 
@@ -85,8 +91,9 @@ def generate_images():
 
     return image_lists
 
+
 def generate_app_data():
-    """ Returns a dictionary of app data. """
+    """Returns a dictionary of app data."""
 
     root = Tk()
     root.title("Image Filter App")

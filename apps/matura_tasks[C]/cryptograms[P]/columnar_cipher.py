@@ -2,8 +2,9 @@
 
 import math
 
+
 def key_to_int_list(key_string):
-    """ Converts list of chars/strings to list of integers. """
+    """Converts list of chars/strings to list of integers."""
 
     key_list = key_string.split(",")
     key_int_list = []
@@ -13,8 +14,9 @@ def key_to_int_list(key_string):
 
     return key_int_list
 
+
 def split_into_columns(code, lengths, columns_number):
-    """ Splits code into columns. """
+    """Splits code into columns."""
 
     columns = []
 
@@ -28,8 +30,9 @@ def split_into_columns(code, lengths, columns_number):
 
     return columns
 
+
 def read_letters_in_proper_order(columns, key_to_indices):
-    """ Reads letters in proper order. """
+    """Reads letters in proper order."""
 
     result = []
 
@@ -39,17 +42,18 @@ def read_letters_in_proper_order(columns, key_to_indices):
             if len(columns[i]) > 0:
                 result.append(columns[i].pop(0))
 
-    return ''.join(result)
+    return "".join(result)
+
 
 def generate_column_lengths(code_length, columns_number, columns_indices):
-    """ Generates lengths of columns list. """
+    """Generates lengths of columns list."""
 
     rest = 0
 
     lengths = []
 
     for _ in range(0, columns_number):
-        lengths.append(math.floor(code_length/columns_number))
+        lengths.append(math.floor(code_length / columns_number))
 
     rest = code_length - sum(lengths)
 
@@ -61,8 +65,9 @@ def generate_column_lengths(code_length, columns_number, columns_indices):
 
     return lengths
 
+
 def narrow_key_to_indices(key_list):
-    """ Narrows key to indices. """
+    """Narrows key to indices."""
 
     key_to_indices = key_list
 
@@ -72,8 +77,9 @@ def narrow_key_to_indices(key_list):
 
     return key_to_indices
 
+
 def decrypt_code(code, columns_number, key):
-    """ Decrypts code. """
+    """Decrypts code."""
     code_length = len(code)
 
     key_list = key_to_int_list(key)

@@ -1,7 +1,8 @@
 """ App that encrypts a message using rail fence cipher. """
 
+
 def split_into_fence_of_height_2(text):
-    """ Splits text into fence of height 2. """
+    """Splits text into fence of height 2."""
 
     fence = [[], []]
     letters = 0
@@ -13,10 +14,12 @@ def split_into_fence_of_height_2(text):
 
     return fence
 
-def fence_of_height_2_to_string(fence):
-    """ Converts fence to string. """
 
-    return ''.join(fence[0]) + ''.join(fence[1])
+def fence_of_height_2_to_string(fence):
+    """Converts fence to string."""
+
+    return "".join(fence[0]) + "".join(fence[1])
+
 
 print("-Task 3-\n")
 

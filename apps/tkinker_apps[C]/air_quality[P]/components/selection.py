@@ -2,14 +2,15 @@
 
 from tkinter import Tk, Canvas, IntVar
 
+
 class Menu:
-    """ A class for the menu. """
+    """A class for the menu."""
 
     is_open = False
     station_buttons = []
 
     def __init__(self, stations):
-        """ Initializes the menu. """
+        """Initializes the menu."""
 
         self.root = None
         self.canvas = None
@@ -20,7 +21,7 @@ class Menu:
         self.stations = stations
 
     def root_init(self):
-        """ Initializes the menu window. """
+        """Initializes the menu window."""
 
         self.root = Tk()
         self.root.title("Select city")
@@ -39,13 +40,15 @@ class Menu:
         self.x_pos = (screen_width / 2) - (menu_width / 2)
         self.y_pos = (screen_height / 2) - (menu_height / 2)
 
-        self.root.geometry(f'{menu_width}x{menu_height}+{int(self.x_pos)}+{int(self.y_pos)}')
-        self.root.configure(background='white')
+        self.root.geometry(
+            f"{menu_width}x{menu_height}+{int(self.x_pos)}+{int(self.y_pos)}"
+        )
+        self.root.configure(background="white")
 
         self.root.protocol("WM_DELETE_WINDOW", self.quit)
 
     def quit(self):
-        """ Quits the menu. """
+        """Quits the menu."""
 
         self.is_open = False
         self.root.destroy()

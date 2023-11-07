@@ -10,4 +10,3 @@ for i in range(1, 4):
     subprocess.call(["python", file])
 
     print("\n---\n")
-    

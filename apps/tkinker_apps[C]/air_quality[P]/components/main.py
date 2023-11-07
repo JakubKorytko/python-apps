@@ -2,13 +2,14 @@
 
 from tkinter import Tk
 
-class Main():
-    """ A class for the main module. """
+
+class Main:
+    """A class for the main module."""
 
     first_generate = True
 
     def __init__(self, options, stations):
-        """ Initializes the app. """
+        """Initializes the app."""
 
         self.root = None
 
@@ -16,7 +17,7 @@ class Main():
         self.stations = stations
 
     def root_init(self):
-        """ Initializes the root window. """
+        """Initializes the root window."""
 
         self.root = Tk()
         self.root.title("Air quality in Cracow")
@@ -30,11 +31,11 @@ class Main():
         x_pos = (screen_width / 2) - (app_width / 2)
         y_pos = (screen_height / 2) - (app_height / 2)
 
-        self.root.geometry(f'{app_width}x{app_height}+{int(x_pos)}+{int(y_pos)}')
+        self.root.geometry(f"{app_width}x{app_height}+{int(x_pos)}+{int(y_pos)}")
         self.root.protocol("WM_DELETE_WINDOW", self.destroy)
-        self.root.configure(background='white')
+        self.root.configure(background="white")
 
     def destroy(self):
-        """ Destroys the root window. """
+        """Destroys the root window."""
 
         self.root.destroy()

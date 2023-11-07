@@ -2,8 +2,9 @@
 
 from os import path as os_path
 
+
 def find_lines_with_smallest_and_largest_numbers():
-    """ Returns the lines in file 'numbers.txt' that have the smallest and the biggest number. """
+    """Returns the lines in file 'numbers.txt' that have the smallest and the biggest number."""
 
     min_index = -1
     max_index = -1
@@ -20,7 +21,11 @@ def find_lines_with_smallest_and_largest_numbers():
 
     return [min_index, max_index]
 
-[SMALLEST_NUMBER_LINE, LARGEST_NUMBER_LINE] = find_lines_with_smallest_and_largest_numbers()
+
+[
+    SMALLEST_NUMBER_LINE,
+    LARGEST_NUMBER_LINE,
+] = find_lines_with_smallest_and_largest_numbers()
 
 print("Task 3:\n")
 print(f"the smallest number is in the line {SMALLEST_NUMBER_LINE}")

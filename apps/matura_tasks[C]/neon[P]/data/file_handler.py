@@ -4,8 +4,9 @@ import os
 
 script_dir = os.path.dirname(__file__)
 
+
 def data():
-    """ Returns data from file. """
+    """Returns data from file."""
 
     txt_path = "instructions.txt"
     file = os.path.join(script_dir, txt_path)

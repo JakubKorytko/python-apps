@@ -6,8 +6,9 @@ import os
 # dropdown? - set this to false in order to open city selection in new window instead of dropdown
 # font - set font name and size
 
+
 def get_config():
-    """ Returns config from config.json. """
+    """Returns config from config.json."""
 
     script_dir = os.path.dirname(__file__)
     txt_path = "config.json"

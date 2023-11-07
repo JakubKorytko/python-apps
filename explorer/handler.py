@@ -9,12 +9,13 @@ from re import search as re_search
 from subprocess import call as subprocess_call
 from explorer.submodules import Text
 
+
 class Explorer:
-    """ Explorer class for exploring a directory structure containing programs and categories. """
+    """Explorer class for exploring a directory structure containing programs and categories."""
 
     @staticmethod
     def get_data(path):
-        """ Returns a list of categories in the given path. """
+        """Returns a list of categories in the given path."""
 
         categories = Explorer.categories(path)
         if not categories:
@@ -24,7 +25,7 @@ class Explorer:
 
     @staticmethod
     def isdir(path):
-        """ Returns True if the given path is a directory, False otherwise. """
+        """Returns True if the given path is a directory, False otherwise."""
 
         exists = os_path.exists(path)
         if not exists:
@@ -36,7 +37,7 @@ class Explorer:
 
     @staticmethod
     def list_dir(path):
-        """ Returns a list of files in the given directory. """
+        """Returns a list of files in the given directory."""
 
         if not Explorer.isdir(path):
             return False
@@ -46,7 +47,7 @@ class Explorer:
 
     @staticmethod
     def regexp(data, option):
-        """ Returns True if the given option is in the given data, False otherwise. """
+        """Returns True if the given option is in the given data, False otherwise."""
 
         upper = option.upper()
         lower = option.lower()
@@ -55,7 +56,7 @@ class Explorer:
 
     @staticmethod
     def sort_files(files):
-        """ Returns a dictionary containing a list of categories and a list of programs. """
+        """Returns a dictionary containing a list of categories and a list of programs."""
 
         data = {"subcategories": [], "apps": []}
         for file in files:
@@ -67,10 +68,12 @@ class Explorer:
 
             if c_and_p:
                 Text.display(
-                    "\nError: file can't be both a category and a program", "red")
+                    "\nError: file can't be both a category and a program", "red"
+                )
                 Text.display(
-                    "Please rename the file to remove the [C] or [P] tag", "red")
-                Text.display("File: "+file, "red")
+                    "Please rename the file to remove the [C] or [P] tag", "red"
+                )
+                Text.display("File: " + file, "red")
                 Text.display("File will be ignored", "red")
                 continue
             if regexp_c and Explorer.isdir(file):
@@ -82,8 +85,8 @@ class Explorer:
 
     @staticmethod
     def categories(folder):
-        """ Returns a dictionary containing the name, path,
-        description, and contents of the given folder. """
+        """Returns a dictionary containing the name, path,
+        description, and contents of the given folder."""
 
         contents = Explorer.list_dir(folder)
         if not contents:
@@ -93,13 +96,13 @@ class Explorer:
             "path": folder,
             "type": "category",
             "desc": Explorer.desc_file(folder),
-            **Explorer.sort_files(contents)
+            **Explorer.sort_files(contents),
         }
         return data
 
     @staticmethod
     def desc_file(folder):
-        """ Returns the contents of the desc.txt file in the given folder. """
+        """Returns the contents of the desc.txt file in the given folder."""
 
         contents = Explorer.list_dir(folder)
         if not contents:
@@ -112,7 +115,7 @@ class Explorer:
 
     @staticmethod
     def run(path):
-        """ Runs the program at the given path. """
+        """Runs the program at the given path."""
 
         if os_path.basename(path) == "notfound":
             Text.display("\nCould not find main.py file in the program folder", "red")
@@ -125,8 +128,8 @@ class Explorer:
 
     @staticmethod
     def program(folder):
-        """ Returns a dictionary containing the name, path,
-        description, and entry point of the given folder. """
+        """Returns a dictionary containing the name, path,
+        description, and entry point of the given folder."""
 
         contents = Explorer.list_dir(folder)
         if not contents:
@@ -144,7 +147,7 @@ class Explorer:
 
     @staticmethod
     def exec_file(folder):
-        """ Returns the entry point of the app in the given folder. """
+        """Returns the entry point of the app in the given folder."""
 
         contents = Explorer.list_dir(folder)
         if not contents:

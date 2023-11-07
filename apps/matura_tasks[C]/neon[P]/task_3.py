@@ -2,13 +2,13 @@
 
 from data.file_handler import data
 
+
 def get_letters_occurences():
-    """ Returns a dictionary with added letters occurences. """
+    """Returns a dictionary with added letters occurences."""
 
     occurences = {}
 
     for command_line in data():
-
         [command, arg] = command_line.strip().split(" ")
 
         if command != "ADD":
@@ -19,14 +19,11 @@ def get_letters_occurences():
 
         occurences[arg] += 1
 
-
     return occurences
+
 
 LETTERS_OCCURENCES = get_letters_occurences()
 MOST_FREQUENTLY_ADDED_LETTER = max(LETTERS_OCCURENCES, key=LETTERS_OCCURENCES.get)
 MOST_FREQUENTLY_ADDED_LETTER_COUNT = LETTERS_OCCURENCES[MOST_FREQUENTLY_ADDED_LETTER]
 
-print("Task 3:",
-      MOST_FREQUENTLY_ADDED_LETTER,
-      MOST_FREQUENTLY_ADDED_LETTER_COUNT
-)
+print("Task 3:", MOST_FREQUENTLY_ADDED_LETTER, MOST_FREQUENTLY_ADDED_LETTER_COUNT)
