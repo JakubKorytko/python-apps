@@ -21,8 +21,9 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    - name: Install pylint
-      run: pip install pylint
-
-    - name: Run pylint
-      run: pylint $(git ls-files '*.py')
+    - name: Lint Code Base
+      uses: super-linter/super-linter@v5
+      env:
+        VALIDATE_ALL_CODEBASE: true
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
