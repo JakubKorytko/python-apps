@@ -1,29 +1,33 @@
+---
 name: Run Linting
 
-on: [push]
+# in quotes to avoid YAMLLint thinking it's a boolean
+"on": push
 
 jobs:
   lint_code:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Set up Python 3.11.4
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.11.4'
-        cache: 'pip'
+      - name: Set up Python 3.11.4
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11.4'
+          cache: 'pip'
 
-    - name: Install pip
-      run: python -m pip install --upgrade pip
+      - name: Install pip
+        run: python -m pip install --upgrade pip
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-    - name: Lint Code Base
-      uses: super-linter/super-linter@v5
-      env:
-        VALIDATE_ALL_CODEBASE: true
-        DEFAULT_BRANCH: main
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Lint Code Base
+        uses: super-linter/super-linter@v5
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          FILTER_REGEX_EXCLUDE: 'data_.*.txt'
+          DEFAULT_BRANCH: main
+          PYTHON_PYLINT_CONFIG_FILE: .pylintrc
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
