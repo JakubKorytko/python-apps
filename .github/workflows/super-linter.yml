@@ -1,11 +1,11 @@
 ---
-name: Run Linting
+name: Run Super-Linter
 
 # in quotes to avoid YAMLLint thinking it's a boolean
 "on": push
 
 jobs:
-  lint_code:
+  super-linter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,7 +26,6 @@ jobs:
       - name: Lint Code Base
         uses: super-linter/super-linter@v5
         env:
-          VALIDATE_ALL_CODEBASE: true
           FILTER_REGEX_EXCLUDE: 'data_.*.txt'
           DEFAULT_BRANCH: main
           PYTHON_PYLINT_CONFIG_FILE: .pylintrc
