@@ -1,4 +1,4 @@
-""" A app that prints the final text from a file with commands. """
+""" Module that prints the final text from a file with commands. """
 
 from data.commands_handler import process_commands
 from data.file_handler import data
