@@ -1,13 +1,14 @@
 """ Menu for selecting city to display air quality data for. """
 
-from tkinter import Tk, Canvas, IntVar
+from tkinter import Canvas, IntVar, Radiobutton, Tk
+from typing import List
 
 
 class Menu:
     """A class for the menu."""
 
     is_open = False
-    station_buttons = []
+    station_buttons: List[Radiobutton] = []
 
     def __init__(self, stations):
         """Initializes the menu."""
