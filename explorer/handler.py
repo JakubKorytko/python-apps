@@ -3,10 +3,12 @@ that provides methods for exploring a directory structure containing programs an
 It can categorize programs and categories, retrieve program descriptions,
 run programs, and provide information about them. """
 
-from sys import exit as sys_exit
-from os import path as os_path, listdir as os_listdir
+from os import listdir as os_listdir
+from os import path as os_path
 from re import search as re_search
 from subprocess import call as subprocess_call
+from sys import exit as sys_exit
+
 from explorer.submodules import Text
 
 

@@ -3,12 +3,13 @@ that offers a text-based menu for interacting with a selection of Python applica
 Users can choose categories and programs to run,
 get descriptions, and navigate through the menu. """
 
-from random import randint
-from sys import exit as sys_exit
-from re import search as re_search, sub as re_sub
 from os import path as os_path
-from explorer import Text
-from explorer import Explorer
+from random import randint
+from re import search as re_search
+from re import sub as re_sub
+from sys import exit as sys_exit
+
+from explorer import Explorer, Text
 
 colorsRange = [120, 229]  # excluded dark colors
 

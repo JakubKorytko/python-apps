@@ -1,6 +1,6 @@
 """ Encrypts given text using Caesar cipher. """
 
-from data.handler import MIN_ORD, MAX_ORD, DIFF, read_file, save_result
+from data.handler import DIFF, MAX_ORD, MIN_ORD, read_file, save_result
 
 K = 107
 

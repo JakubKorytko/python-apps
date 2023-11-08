@@ -1,6 +1,6 @@
 """ A module for drawing elements on the canvas. """
 
-from tkinter import EW, NS, Label, Button, Radiobutton
+from tkinter import EW, NS, Button, Label, Radiobutton
 
 
 class Draw:

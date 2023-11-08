@@ -1,8 +1,9 @@
 """ A module for fetching data from the API and returning it in a usable format. """
 
-from sys import exit as sys_exit
 import json
 import re
+from sys import exit as sys_exit
+
 import requests
 
 

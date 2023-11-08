@@ -1,6 +1,7 @@
 """ Program that checks if a phrase is a palindrome """
 
-from re import IGNORECASE, sub as re_sub
+from re import IGNORECASE
+from re import sub as re_sub
 
 
 def is_palindrome(phrase):

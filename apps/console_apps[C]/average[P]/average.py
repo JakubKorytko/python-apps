@@ -1,7 +1,7 @@
 """ App to calculate grade point average """
 
-from re import sub as re_sub
 from os import path as os_path
+from re import sub as re_sub
 from sys import exit as sys_exit
 
 

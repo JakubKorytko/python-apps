@@ -1,6 +1,6 @@
 """ Text module for displaying formatted text in the terminal. """
 
-from colored import fg, attr
+from colored import attr, fg
 
 
 class Text:

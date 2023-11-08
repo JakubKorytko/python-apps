@@ -1,11 +1,12 @@
 """ This module contains functions for processing images. """
 
 from json import load as json_load
-from sys import exit as sys_exit
 from os import path as os_path
+from sys import exit as sys_exit
 from tkinter import Tk
-from PIL import ImageTk, Image, ImageFilter
+
 import requests
+from PIL import Image, ImageFilter, ImageTk
 
 
 def get_available_filters():

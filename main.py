@@ -1,8 +1,10 @@
 """ Entry point for the program. """
 
-from os import path as os_path, getcwd
-from menu import Menu
+from os import getcwd
+from os import path as os_path
+
 from explorer.handler import Explorer
+from menu import Menu
 
 
 def main():

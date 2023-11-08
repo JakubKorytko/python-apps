@@ -1,8 +1,8 @@
 """ Functions for preparing data for the app. """
 
+from components import Dropdown, Main, Menu
 from config import get_config
-from utilities import UIHandler, Draw, API
-from components import Dropdown, Menu, Main
+from utilities import API, Draw, UIHandler
 
 
 def get_dropdown_bool():

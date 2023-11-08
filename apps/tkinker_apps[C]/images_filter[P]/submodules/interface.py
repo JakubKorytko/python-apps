@@ -1,6 +1,6 @@
 """ This module contains the logic for the UI. """
 
-from tkinter import Label, Button, DISABLED, SUNKEN, E, W, NORMAL
+from tkinter import DISABLED, NORMAL, SUNKEN, Button, E, Label, W
 
 
 class UIHandler:
