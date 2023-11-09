@@ -27,7 +27,7 @@ jobs:
         uses: super-linter/super-linter@v5
         env:
           VALIDATE_ALL_CODEBASE: false
-          FILTER_REGEX_EXCLUDE: 'data_.*.txt'
+          FILTER_REGEX_EXCLUDE: 'data_.*\.txt'
           DEFAULT_BRANCH: main
           PYTHON_PYLINT_CONFIG_FILE: .pylintrc
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
