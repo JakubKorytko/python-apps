@@ -9,7 +9,7 @@ from re import search as re_search
 from subprocess import call as subprocess_call
 from sys import exit as sys_exit
 
-from explorer.submodules import Text
+from python_apps.explorer.submodules import Text
 
 
 class Explorer:

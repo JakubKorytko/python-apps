@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "python-apps"
+version = "1.0.1"
+description = "This app lets you run various Python programs with a simple console menu"
+authors = ["JakubKorytko <jakub.korytko@o2.pl>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11.4"
+colored = "^2.2.3"
+pillow = "^10.1.0"
+requests = "^2.31.0"
+
+[tool.poetry.scripts]
+python-apps = "python_apps.__main__:main"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11.0"
+pylint = "^3.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

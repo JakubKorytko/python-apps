@@ -9,7 +9,7 @@ from re import search as re_search
 from re import sub as re_sub
 from sys import exit as sys_exit
 
-from explorer import Explorer, Text
+from python_apps.explorer import Explorer, Text
 
 colorsRange = [120, 229]  # excluded dark colors
 
