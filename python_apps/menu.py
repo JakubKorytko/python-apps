@@ -31,13 +31,15 @@ class Menu:
         """Prints the menu."""
 
         Text.display(
-            "[C] means an option is a category, if you select a category, "
+            "[C] at the end of the name "
+            + "means that an option is a category, if you select a category, "
             + "it will list the programs inside of it to select",
             "green",
         )
         Text.display(
-            "[P] means an option is a program, "
-            + "if you select a program, it will run it",
+            "[P] at the end of the name "
+            + "means that an option is a program, "
+            + "if you select a program, it will run",
             "green",
         )
         Text.display(
