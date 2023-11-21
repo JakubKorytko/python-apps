@@ -1,11 +1,14 @@
 [tool.poetry]
 name = "python-apps"
-version = "1.0.1"
+version = "2.0.0"
 description = "This app lets you run various Python programs with a simple console menu"
 authors = ["JakubKorytko <jakub.korytko@o2.pl>"]
 license = "MIT"
 readme = "README.md"
-include = ["apps"]
+packages = [
+    { include = "python_apps", from = "." },
+    { include = "apps", from = "." }
+]
 
 [tool.poetry.dependencies]
 python = "^3.11.4"
