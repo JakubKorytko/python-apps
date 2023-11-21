@@ -54,7 +54,6 @@ class Explorer:
         upper = option.upper()
         lower = option.lower()
         reg_match = re_search(rf".*\[({lower}|{upper})\]$", data)
-        print(data, reg_match)
         return reg_match is not None
 
     @staticmethod
