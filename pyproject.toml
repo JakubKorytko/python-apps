@@ -5,6 +5,7 @@ description = "This app lets you run various Python programs with a simple conso
 authors = ["JakubKorytko <jakub.korytko@o2.pl>"]
 license = "MIT"
 readme = "README.md"
+include = ["apps"]
 
 [tool.poetry.dependencies]
 python = "^3.11.4"
