@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 packages = [
     { include = "python_apps", from = "." },
-    { include = "apps", from = "." }
+    { include = "pyap_apps", from = "." }
 ]
 
 [tool.poetry.dependencies]

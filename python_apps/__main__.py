@@ -11,7 +11,7 @@ def main():
 
     working_dir = os_path.dirname(os_path.realpath(__file__))
 
-    apps_folder = "apps"
+    apps_folder = "pyap_apps"
     parent_folder = os_path.join(working_dir, "..")
 
     path = os_path.join(working_dir, apps_folder)
