@@ -7,9 +7,12 @@ from os import listdir as os_listdir
 from os import path as os_path
 from re import search as re_search
 from subprocess import call as subprocess_call
+from sys import executable
 from sys import exit as sys_exit
 
 from python_apps.explorer.submodules import Text
+
+PYTHON = executable or "python"
 
 
 class Explorer:
@@ -112,7 +115,7 @@ class Explorer:
             return False
 
         Text.display("\nStarting app...\n", "blue")
-        subprocess_call(["python", path])
+        subprocess_call([PYTHON, path])
 
         return True
 
