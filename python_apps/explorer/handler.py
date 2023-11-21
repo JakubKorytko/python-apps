@@ -53,7 +53,8 @@ class Explorer:
 
         upper = option.upper()
         lower = option.lower()
-        reg_match = re_search(rf"\w+\[({lower}|{upper})\]", data)
+        reg_match = re_search(rf".*\[({lower}|{upper})\]$", data)
+        print(data, reg_match)
         return reg_match is not None
 
     @staticmethod
@@ -66,18 +67,7 @@ class Explorer:
 
             regexp_c = Explorer.regexp(base, "c")
             regexp_p = Explorer.regexp(base, "p")
-            c_and_p = re_search(r"(\[(c|C)\]\[P|p\])|(\[(p|P)\]\[C|c\])", base)
 
-            if c_and_p:
-                Text.display(
-                    "\nError: file can't be both a category and a program", "red"
-                )
-                Text.display(
-                    "Please rename the file to remove the [C] or [P] tag", "red"
-                )
-                Text.display("File: " + file, "red")
-                Text.display("File will be ignored", "red")
-                continue
             if regexp_c and Explorer.isdir(file):
                 data["subcategories"].append(Explorer.categories(file))
             elif regexp_p and Explorer.isdir(file):
@@ -91,8 +81,7 @@ class Explorer:
         description, and contents of the given folder."""
 
         contents = Explorer.list_dir(folder)
-        if not contents:
-            return False
+
         data = {
             "name": os_path.basename(folder),
             "path": folder,
@@ -107,12 +96,12 @@ class Explorer:
         """Returns the contents of the desc.txt file in the given folder."""
 
         contents = Explorer.list_dir(folder)
-        if not contents:
-            return False
-        for file in contents:
-            base = os_path.basename(file)
-            if base == "desc.txt":
-                return open(file, "r", encoding="utf-8").read()
+
+        if contents:
+            for file in contents:
+                base = os_path.basename(file)
+                if base == "desc.txt":
+                    return open(file, "r", encoding="utf-8").read()
         return "No description file provided (desc.txt)"
 
     @staticmethod
@@ -133,10 +122,6 @@ class Explorer:
         """Returns a dictionary containing the name, path,
         description, and entry point of the given folder."""
 
-        contents = Explorer.list_dir(folder)
-        if not contents:
-            return False
-
         data = {
             "name": os_path.basename(folder),
             "path": folder,
@@ -152,10 +137,10 @@ class Explorer:
         """Returns the entry point of the app in the given folder."""
 
         contents = Explorer.list_dir(folder)
-        if not contents:
-            return False
-        for file in contents:
-            base = os_path.basename(file)
-            if base == "main.py":
-                return "main.py"
+
+        if contents:
+            for file in contents:
+                base = os_path.basename(file)
+                if base == "main.py":
+                    return "main.py"
         return "notfound"
