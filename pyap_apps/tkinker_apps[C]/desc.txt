@@ -1,1 +1,0 @@
-Apps made with use of TKinker library. These apps contains graphical user interface

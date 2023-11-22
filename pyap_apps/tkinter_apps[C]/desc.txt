@@ -1,0 +1,1 @@
+Apps made with use of Tkinter library. These apps contains graphical user interface
